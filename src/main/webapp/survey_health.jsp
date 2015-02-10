@@ -5,6 +5,7 @@
 <%@page import="com.dao.User"%>
 <%@page import="com.dao.SurveyHealthDAO"%>
 <%@page import="com.dao.SurveyHealth"%>
+<%@ page import="com.util.PageUtil" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <jsp:include page="head.jsp">
@@ -51,7 +52,6 @@ String names3[] = {"hasZhiQiGuan","hasXiaoChuan","hasFeiQiZhong",
 		"hasZhiChuang","hasGanYan","hasGanYingHua","hasPinXue","hasShenShuaiJie","hasGuShuSong",
 		"hasTongFeng","hasFeiAi","hasWeiAi","hasGanAi","hasDaChangAi","hasOther"};
 
-
 User user = (User)session.getAttribute("user");
 SurveyHealthDAO dao = new SurveyHealthDAO();
 SurveyHealth health = dao.findById(user.getId());
@@ -63,33 +63,7 @@ health = BeanUtil.getBeanNoNullString(request, SurveyHealth.class , health);
  <script type="text/javascript">
  var heal = <%=healthJson%>;
  $(function(){
-	 //var all = $("input:radio");
-	 /*
-	 $("input:radio33").each(function(){
-		 //alert(123);
-		 //$(this).mouseover(function(){
-		//	 $(this).css('background-color', '#eeeeee');
-		 //})
-		 //alert(heal[$(this).attr("name")]);
-		 console.log(heal[$(this).attr("name")]);
-		 
-		 var v = heal[$(this).attr("name")];
-		 var strArr = v.split(";");
-		 if(strArr.length == 2){
-			 var firstVal = strArr[0];
-			 var secondVal = strArr[1];
-			 
-		 }else{
-			 if( heal[$(this).attr("name")] == $(this).attr("value")){
-				 //$(this).attr("checked","checked");
-			 } 
-		 }
-		
-	 });
-	*/
 	 updatePage(heal);
-	 
- 
  });
  </script>
 <div class="contentDiv">
@@ -108,12 +82,21 @@ health = BeanUtil.getBeanNoNullString(request, SurveyHealth.class , health);
 	      <div style="display: block">
 	      <%for(int i=0; i<labels.length; i++){
 	       %>
-	       <label class="col-sm-4 control-label"><%=labels[i] %>:</label>
+	       <%--<label class="col-sm-4 control-label"><%=labels[i] %>:</label>
 	    	<div class="col-sm-8">
 	        <label class="radio-inline"> <input  type="radio" name="<%=names[i] %>"  value="没有" > 没有 </label>
 	        <label class="radio-inline"> <input type="radio" name="<%=names[i] %>"  value="偶尔"> 偶尔 </label>
 	        <label class="radio-inline"> <input type="radio" name="<%=names[i] %>"  value="经常"> 经常 </label>
-	        </div>
+	        </div>--%>
+			  <div class="row">
+				  <label class="col-sm-4 control-label"><%=labels[i] %>:</label>
+				  <div class="col-sm-4">
+					  <select class="input-xlarge" style="width: 100px;" name="job">
+						  <% out.println(PageUtil.getOptions(new String[]{"没有", "偶尔",
+								  "经常"}, "")); %>
+					  </select>
+				  </div>
+			  </div>
 	       <%} %>
 	    </div>
     </fieldset>
@@ -143,7 +126,7 @@ health = BeanUtil.getBeanNoNullString(request, SurveyHealth.class , health);
 	        </div>
 	     </div>
        <%} %>
-       <label for="name" class="col-sm-4 control-label">其他疾病（如有，请列出）</label>
+       <label class="col-sm-4 control-label">其他疾病（如有，请列出）</label>
         <div class="col-sm-8">
             <input type="text" class="form-control col-sm-5" name="hasOther" placeholder="其他疾病"/>
         </div>
@@ -183,7 +166,7 @@ health = BeanUtil.getBeanNoNullString(request, SurveyHealth.class , health);
 			        <label class="radio-inline"> <input type="radio" name="isJueJing" id="isJueJing2" value="是" onclick="checkYes(this);"> 是 </label>
 		        <div class="form-group " id="isJueJingDiv" style="display: none">
 			        <label for="isJueJing0" class="col-sm-4 control-label">绝经年龄?</label>
-			        <label><input type="number" data-bind="value:replyNumber" class="form-control"  name="isJueJing0" id="ageOfJueJing" /></label>
+			        <label><input type="number"  class="form-control"  name="isJueJing0" id="ageOfJueJing" /></label>
 		        </div>
 		        </div>
 	        </div>

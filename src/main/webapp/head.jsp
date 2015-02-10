@@ -32,14 +32,14 @@
    		margin-bottom: 20px;
    	}
    	.bodyStyle{
-   		style="background-color:#f8f8f8";
+   		background-color:#f8f8f8;
    	}
    	.input-group-addon{
    		width:250px;
    	}
    	
    	label {
-    font-weight: normal !important;
+
 	}
 	
 	input:focus, input:hover, textarea:focus, textarea:hover {
@@ -80,7 +80,7 @@
 					    	$(this).attr("checked","checked");
 					    }
 			    	}else{
-				    	console.log( this.value + " ; "  + strArr.length );
+				    	console.log( this.value + " ; "  + strArr.length + " pname:" + pname);
 				    	if(this.value == strArr[0]){
 					    	$(this).attr("checked","checked");
 					    }
@@ -90,6 +90,13 @@
 						    	$(this).attr("checked","checked");
 						    }
 				    	});
+						jQuery("input[name='"+pname+"0'][type='input']").each(function() {
+							$(this).attr("value",strArr[1]);
+						});
+						jQuery("input[name='"+pname+"0'][type='number']").each(function() {
+							$(this).attr("value",strArr[1]);
+						});
+
 				    	var div = window.document.getElementById(pname+"Div");
 				    	$(div).show();
 			    	}

@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@page import="com.dao.User"%>
 <%@page import="com.util.PageUtil"%>
+<%@ page import="com.util.BeanUtil" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
@@ -46,8 +47,7 @@
    </style>
 </head>
 <body style="background-color:#f8f8f8">
-<jsp:include page="check.jsp"></jsp:include>
-<% 
+<%
 request.setCharacterEncoding("UTF-8");
 System.out.println("check.jsp : " +session.getAttribute("user"));
 if( session.getAttribute("user") == null ){
@@ -55,6 +55,7 @@ if( session.getAttribute("user") == null ){
 	return;
 }
 User user = (User)session.getAttribute("user") ;
+    user = BeanUtil.getBeanNoNullString(request,User.class, user);
 %>
 <div class="contentDiv">
 <br><br>
@@ -74,7 +75,7 @@ User user = (User)session.getAttribute("user") ;
 	<input name="type" value="survey" type="hidden">
     <div class="control-group">
           <!-- Text input-->
-          <label class="control-label" for="input01">姓名</label>
+          <label class="control-label" >姓名</label>
           <div class="controls">
             <input type="text" name="nameZh" value="<%=user.getNameZh() %>" required placeholder="输入姓名" class="input-xlarge">
           </div>
@@ -85,6 +86,7 @@ User user = (User)session.getAttribute("user") ;
           <div class="controls">
       <!-- Multiple Radios -->
 		      <label class="radio inline">
+
 		      <%String check1 = user.getGender().equals("男") ? "checked=\"checked\"":"";%>
 		      <%String check2 = user.getGender().equals("女") ? "checked=\"checked\"":"";%>
 		        <input type="radio" name="gender" required value="男" <%=check1 %>>
@@ -110,31 +112,41 @@ User user = (User)session.getAttribute("user") ;
           <label class="control-label">民族</label>
           <div class="controls">
             <select class="input-xlarge" name="nation" >
-		      <option>汉族</option>
-		      <option>壮族</option>
-		      <option>满族</option>
-		      <option>回族</option>
-		      <option>其他</option></select>
+                <% out.println( PageUtil.getOptions(new String[]{"汉族","壮族","满族","回族","其他"}, user.getNation())); %>
+
+             </select>
           </div>
 
         </div>
 
  	<div class="control-group">
-          <label class="control-label" for="input01" >贯籍</label>
+          <label class="control-label" >贯籍</label>
           <div class="controls">
             <input type="text"  placeholder="贯籍" value="<%=user.getHome() %>" class="input-xlarge" name="home" required>
           </div>
         </div>
 
-	<div class="control-group">
+	    <div class="control-group">
                 <label class="control-label">出生日期</label>
-                <div class="controls input-append date form_date" style="margin-left:20px"
+                <div class="controls input-append date form_date" style="margin-left:20px; "
                  data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
                     <input name="birth"  type="text" value="<%=user.getBirth() %>" readonly >
 					<span class="add-on"><i class="icon-th"></i></span>
                 </div>
 				<input type="hidden" name="birth" id="dtp_input2" value="<%=user.getBirth() %>" required/><br/>
             </div>
+        <script type="text/javascript">
+            $('.form_date').datetimepicker({
+                language:'cn',
+                weekStart: 1,
+                autoclose: 1,
+                startView: 2,
+                minView: 2,
+                forceParse: 0,
+                initialDate:"1990-01-01",
+                pickerPosition: "top-right"
+            });
+        </script>
 
     <div class="control-group">
 
@@ -175,7 +187,9 @@ User user = (User)session.getAttribute("user") ;
           <div class="controls">
             <input type="text"  placeholder="xx省xx市xx区xx路xx号" value="<%=user.getAddress() %>" name="address" required class="input-xlarge">
           </div>
-        </div><div class="control-group">
+        </div>
+
+        <div class="control-group">
 
           <!-- Text input-->
           <label class="control-label" >手机</label>
@@ -206,16 +220,6 @@ User user = (User)session.getAttribute("user") ;
   </form>
 
 </div>
-<script type="text/javascript">
-$('.form_date').datetimepicker({
-    language:  'cn',
-    weekStart: 1,
-	autoclose: 1,
-	startView: 2,
-	minView: 2,
-	forceParse: 0,
-	initialDate:"1990-01-01"
-});
-</script>
+
 </body>
 </html>
