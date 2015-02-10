@@ -33,14 +33,14 @@ for(int i=1; i<=31; i++){
 		<div class="titleDiv">一般项目</div>
 	<table>
 	<%for(int i=1; i<=24; i+=2){ Formdata form = dao.findById(i);
-	Formdata form2 = dao.findById(i+1);
-	String label1 = form.getLabel()+ "(" +form.getUnit() + ")"; String label2 = form2.getLabel()+ "(" +form2.getUnit() + " )";
-	if(form.getUnit().equals("无") || StringUtils.isNullOrEmpty(form.getUnit())){
-		label1 = form.getLabel();
-	}
-	if(form2.getUnit().equals("无") || StringUtils.isNullOrEmpty(form2.getUnit())){
-		label2 = form2.getLabel();
-	}
+		Formdata form2 = dao.findById(i+1);
+		String label1 = form.getLabel()+ "(" +form.getUnit() + ")"; String label2 = form2.getLabel()+ "(" +form2.getUnit() + " )";
+		if(form.getUnit().equals("无") || StringUtils.isNullOrEmpty(form.getUnit())){
+			label1 = form.getLabel();
+		}
+		if(form2.getUnit().equals("无") || StringUtils.isNullOrEmpty(form2.getUnit())){
+			label2 = form2.getLabel();
+		}
 	%>
 		<tr>
 			<td>
@@ -81,7 +81,6 @@ for(int i=1; i<=31; i++){
 
 <script type="text/javascript">
 	
-	//alertsubmit.onclick);
 </script>
 </body>
 </html>
