@@ -25,6 +25,7 @@ String eatJson = new Gson().toJson(eat);
  
  </script>
 <div class="contentDiv">
+	<h1 align="center">个人健康状况及生活方式问卷</h1>
    <form class="form-horizontal" id="submitBtn">
    <input type="hidden" value="survey_eat" met>
    <legend >第三部分：饮食习惯和生活方式
