@@ -41,7 +41,10 @@
    	label {
 
 	}
-	
+
+	.radio-inline{
+		margin-right: 20px;
+	}
 	input:focus, input:hover, textarea:focus, textarea:hover {
 		 
 	 }
@@ -113,5 +116,12 @@
 		  });
 	 }
  }
+
+	<% if("success".equals( request.getParameter("result")) ){ %>
+			alert("操作成功！");
+	  <% }else if("error".equals( request.getParameter("result"))){ %>
+ alert("操作失败！");
+	  <%}%>
  </script>
+
 </head>

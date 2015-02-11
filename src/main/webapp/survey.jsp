@@ -17,7 +17,11 @@
 <script src="boots/js/date2.js"></script>
 	<link href="boots/css/date.css" rel="stylesheet">
 <script type="text/javascript">
-
+    <% if("success".equals( request.getParameter("result")) ){ %>
+    alert("操作成功！");
+    <% }else if("success".equals( request.getParameter("result"))){ %>
+    alert("操作失败！");
+    <%}%>
 
 </script>
    <style type="text/css">
@@ -213,7 +217,7 @@ User user = (User)session.getAttribute("user") ;
             <input   type="submit"  class="btn btn-success" 
          value="&nbsp;保&nbsp;&nbsp;存&nbsp;">
          	&nbsp;&nbsp;
-         	<a class=""  href="survey_health.jsp" role="button">下一页</a>
+         	<a class=""  href="survey_health.jsp" role="button" onclick="return ">下一页</a>
           </div>
         </div>
     
