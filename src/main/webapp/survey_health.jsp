@@ -6,6 +6,7 @@
 <%@page import="com.dao.SurveyHealthDAO"%>
 <%@page import="com.dao.SurveyHealth"%>
 <%@ page import="com.util.PageUtil" %>
+<%@ page import="java.lang.reflect.Field" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <jsp:include page="head.jsp">
@@ -55,7 +56,7 @@ String names3[] = {"hasZhiQiGuan","hasXiaoChuan","hasFeiQiZhong",
 User user = (User)session.getAttribute("user");
 SurveyHealthDAO dao = new SurveyHealthDAO();
 SurveyHealth health = dao.findById(user.getId());
-health = BeanUtil.getBeanNoNullString(request, SurveyHealth.class , health);
+health = BeanUtil.getBeanNoNullString(request, SurveyHealth.class, health);
  String healthJson = new Gson().toJson(health);
  logger.info("healthJson from db:", healthJson);
          %>
@@ -91,9 +92,13 @@ health = BeanUtil.getBeanNoNullString(request, SurveyHealth.class , health);
 			  <div class="row">
 				  <label class="col-sm-4 control-label"><%=labels[i] %>:</label>
 				  <div class="col-sm-4">
-					  <select class="input-xlarge" style="width: 100px;" name="job">
-						  <% out.println(PageUtil.getOptions(new String[]{"没有", "偶尔",
-								  "经常"}, "")); %>
+					  <select class="input-xlarge" style="width: 100px;" name="<%=names[i] %>">
+						  <%
+							  Field f = health.getClass().getDeclaredField(names[i]);
+							  f.setAccessible(true);
+							  System.out.println("health.getClass().getDeclaredField(names[i]) :" + f.get(health).toString());
+							  out.println(PageUtil.getOptions(new String[]{"没有", "偶尔",
+									  "经常"}, f.get(health).toString() )); %>
 					  </select>
 				  </div>
 			  </div>

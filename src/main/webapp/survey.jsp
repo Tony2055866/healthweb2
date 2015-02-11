@@ -55,7 +55,7 @@ if( session.getAttribute("user") == null ){
 	return;
 }
 User user = (User)session.getAttribute("user") ;
-    user = BeanUtil.getBeanNoNullString(request,User.class, user);
+    user = BeanUtil.getBeanNoNullString(request, User.class, user);
 %>
 <div class="contentDiv">
 <br><br>
@@ -66,7 +66,7 @@ User user = (User)session.getAttribute("user") ;
 为保持信息的完整和准确，请不要用铅笔填写，尽量保持字迹清晰，不缺项漏项。谢谢您的合作！
 </p>
 
-<form class="form-horizontal" method="POST" action="servlet/RegServlet">
+<form class="form-horizontal" method="POST" action="servlet/SurveySubmit.jsp">
     <fieldset>
       <div id="legend" class="">
         <legend >第一部分：一般信息

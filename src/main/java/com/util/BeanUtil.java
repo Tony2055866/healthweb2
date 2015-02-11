@@ -90,7 +90,7 @@ public class BeanUtil {
 	
 	
 	
-	public static <T> T  getBeanNoNullString(HttpServletRequest req, Class<T> c, T t){
+	public static <T> T getBeanNoNullStringFromRequest(HttpServletRequest req, Class<T> c, T t){
 		try {
 			if(t == null)
 				t = c.newInstance();
@@ -109,6 +109,24 @@ public class BeanUtil {
 					logger.warn("the parameter is null : " + name);
 				}
 				
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return t;
+	}
+	
+	public static <T> T getBeanNoNullString(HttpServletRequest req, Class<T> c, T t){
+		try {
+			if(t == null)
+				t = c.newInstance();
+			Field[] fields = c.getDeclaredFields();
+			for(int i=0; i<fields.length; i++){
+				String name = fields[i].getName();
+				fields[i].setAccessible(true);
+				if( (fields[i].getType()==String.class) &&  fields[i].get(t) == null){
+					fields[i].set(t, "");
+				}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

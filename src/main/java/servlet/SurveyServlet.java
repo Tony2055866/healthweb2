@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.log4j.spi.LoggerFactory;
 import org.slf4j.Logger;
 
 import com.dao.SurveyEat;
@@ -26,7 +25,6 @@ public class SurveyServlet extends HttpServlet {
 	 */
 	public void destroy() {
 		super.destroy(); // Just puts "destroy" string in log
-		// Put your code here
 	}
 
 	
@@ -73,10 +71,10 @@ public class SurveyServlet extends HttpServlet {
 				dao.update(user);
 				logger.info("save user : " + user );
 			} catch (Exception e) {
-				response.sendRedirect(req.getContextPath() + "/survye.jsp?result=success");
+				response.sendRedirect(req.getContextPath() + "/survey.jsp?result=success");
 				e.printStackTrace();
 			}
-			response.sendRedirect(req.getContextPath() + "/survye.jsp?result=error");
+			response.sendRedirect(req.getContextPath() + "/survey.jsp?result=error");
 		}else if(type.equals("survey_eat")){
 			try {
 				user = BeanUtil.getBean(req, User.class, user);
@@ -84,20 +82,25 @@ public class SurveyServlet extends HttpServlet {
 				dao.update(user);
 				logger.info("save user : " + user );
 			} catch (Exception e) {
-				response.sendRedirect(req.getContextPath() + "/survye.jsp?result=success");
+				response.sendRedirect(req.getContextPath() + "/survey_eat.jsp?result=success");
 				e.printStackTrace();
 			}
-			response.sendRedirect(req.getContextPath() + "/survye.jsp?result=error");
+			response.sendRedirect(req.getContextPath() + "/survey_eat.jsp?result=error");
 		}else if(type.equals("survey_health")){
-			SurveyHealthDAO dao = new SurveyHealthDAO();
-			//SurveyHealth health = dao.findById(user.getId());
-			SurveyHealth health = BeanUtil.getBeanForRadioPage2(req, SurveyHealth.class , null);
-			health.setUid(user.getId());
-			dao.saveOrUpdate(health);
-			logger.info("save health : " + health );
+			try{
+				SurveyHealthDAO dao = new SurveyHealthDAO();
+				//SurveyHealth health = dao.findById(user.getId());
+				SurveyHealth health = BeanUtil.getBeanForRadioPage2(req, SurveyHealth.class , null);
+				health.setUid(user.getId());
+				dao.saveOrUpdate(health);
+				logger.info("save health : " + health );
+			}catch (Exception e){
+				response.sendRedirect(req.getContextPath() + "/survey_health.jsp?result=error");
+			}
+			response.sendRedirect(req.getContextPath() + "/survey_health.jsp?result=error");
 		}else if(type.equals("survey_eat")){
 			SurveyEatDAO dao = new SurveyEatDAO();
-			SurveyEat eat = BeanUtil.getBeanNoNullString(req, SurveyEat.class , null);
+			SurveyEat eat = BeanUtil.getBeanNoNullStringFromRequest(req, SurveyEat.class, null);
 			eat.setUid(user.getId());
 			dao.saveOrUpdate(eat);
 		}

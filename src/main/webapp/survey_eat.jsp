@@ -26,8 +26,8 @@ String eatJson = new Gson().toJson(eat);
  </script>
 <div class="contentDiv">
 	<h1 align="center">个人健康状况及生活方式问卷</h1>
-   <form class="form-horizontal" id="submitBtn">
-   <input type="hidden" value="survey_eat" met>
+   <form class="form-horizontal" id="submitBtn" method="POST" action="/servlet/SurveySubmit.jsp">
+   <input type="hidden" value="survey_eat" name="type">
    <legend >第三部分：饮食习惯和生活方式
         </legend>
         <!-- 饮食习惯 -->
@@ -304,7 +304,8 @@ String eatJson = new Gson().toJson(eat);
 		    		<div class="row">
 			        <label  class="col-sm-4 control-label"><%=qs[i] %></label>
 			        	<div class="col-sm-8">
-				        	<%for(int j=0; j<qsps[i].length; j++){ System.out.println(qsps[i][j]); %>
+				        	<%for(int j=0; j<qsps[i].length; j++){ 
+								%>
 					        <label class="radio-inline"> <input type="radio" name="zhiye0<%=i %>" value="<%=qsps[i][j] %>" ><%=qsps[i][j] %></label>
 				        	<%} %>
 			        </div>
