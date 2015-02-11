@@ -31,7 +31,11 @@ public class SurveyEat implements java.io.Serializable {
 	private String whenJieYan;
 	private String isdrink;
 	private String howlongDrink;
-	private String howmuchDrink;
+
+	private String howmuchDrink1;
+	private String howmuchDrink2;
+	private String howmuchDrink3;
+
 	private String ismustDrink;
 	private String work;
 	private String jiaotong;
@@ -93,7 +97,6 @@ public class SurveyEat implements java.io.Serializable {
 		this.whenJieYan = whenJieYan;
 		this.isdrink = isdrink;
 		this.howlongDrink = howlongDrink;
-		this.howmuchDrink = howmuchDrink;
 		this.ismustDrink = ismustDrink;
 		this.work = work;
 		this.jiaotong = jiaotong;
@@ -296,13 +299,7 @@ public class SurveyEat implements java.io.Serializable {
 		this.howlongDrink = howlongDrink;
 	}
 
-	public String getHowmuchDrink() {
-		return this.howmuchDrink;
-	}
 
-	public void setHowmuchDrink(String howmuchDrink) {
-		this.howmuchDrink = howmuchDrink;
-	}
 
 	public String getIsmustDrink() {
 		return this.ismustDrink;
@@ -416,4 +413,71 @@ public class SurveyEat implements java.io.Serializable {
 		this.zhiye06 = zhiye06;
 	}
 
+	public String getHowmuchDrink1() {
+		return howmuchDrink1;
+	}
+
+	public void setHowmuchDrink1(String howmuchDrink1) {
+		this.howmuchDrink1 = howmuchDrink1;
+	}
+
+	public String getHowmuchDrink2() {
+		return howmuchDrink2;
+	}
+
+	public void setHowmuchDrink2(String howmuchDrink2) {
+		this.howmuchDrink2 = howmuchDrink2;
+	}
+
+	public String getHowmuchDrink3() {
+		return howmuchDrink3;
+	}
+
+	public void setHowmuchDrink3(String howmuchDrink3) {
+		this.howmuchDrink3 = howmuchDrink3;
+	}
+
+	@Override
+	public String toString() {
+		return "SurveyEat{" +
+				"uid=" + uid +
+				", eat01='" + eat01 + '\'' +
+				", eat02='" + eat02 + '\'' +
+				", eat03='" + eat03 + '\'' +
+				", eat04='" + eat04 + '\'' +
+				", eat05='" + eat05 + '\'' +
+				", eat06='" + eat06 + '\'' +
+				", eat07='" + eat07 + '\'' +
+				", eat08='" + eat08 + '\'' +
+				", eat09='" + eat09 + '\'' +
+				", eat10='" + eat10 + '\'' +
+				", eath01='" + eath01 + '\'' +
+				", eath02='" + eath02 + '\'' +
+				", eath03='" + eath03 + '\'' +
+				", eatt='" + eatt + '\'' +
+				", isXiyan='" + isXiyan + '\'' +
+				", zhuyaoChou='" + zhuyaoChou + '\'' +
+				", howManyYan='" + howManyYan + '\'' +
+				", whenXiYan='" + whenXiYan + '\'' +
+				", hasOtherChou='" + hasOtherChou + '\'' +
+				", whenJieYan='" + whenJieYan + '\'' +
+				", isdrink='" + isdrink + '\'' +
+				", howlongDrink='" + howlongDrink + '\'' +
+				", howmuchDrink='" + howmuchDrink1 + '\'' +
+				", ismustDrink='" + ismustDrink + '\'' +
+				", work='" + work + '\'' +
+				", jiaotong='" + jiaotong + '\'' +
+				", jiawu='" + jiawu + '\'' +
+				", tiyu01='" + tiyu01 + '\'' +
+				", tiyu02='" + tiyu02 + '\'' +
+				", tiyu03='" + tiyu03 + '\'' +
+				", tiyu04='" + tiyu04 + '\'' +
+				", zhiye01='" + zhiye01 + '\'' +
+				", zhiye02='" + zhiye02 + '\'' +
+				", zhiye03='" + zhiye03 + '\'' +
+				", zhiye04='" + zhiye04 + '\'' +
+				", zhiye05='" + zhiye05 + '\'' +
+				", zhiye06='" + zhiye06 + '\'' +
+				'}';
+	}
 }

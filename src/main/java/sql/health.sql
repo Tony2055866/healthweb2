@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50527
 File Encoding         : 65001
 
-Date: 2015-01-31 10:17:55
+Date: 2015-02-12 01:11:42
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -191,7 +191,9 @@ CREATE TABLE `survey_eat` (
   `whenJieYan` varchar(255) DEFAULT NULL,
   `isdrink` varchar(255) DEFAULT NULL,
   `howlongDrink` varchar(255) DEFAULT NULL,
-  `howmuchDrink` varchar(255) DEFAULT NULL,
+  `howmuchDrink1` varchar(255) DEFAULT NULL,
+  `howmuchDrink2` varchar(255) DEFAULT NULL,
+  `howmuchDrink3` varchar(255) DEFAULT NULL,
   `ismustDrink` varchar(255) DEFAULT NULL,
   `work` varchar(255) DEFAULT NULL,
   `jiaotong` varchar(255) DEFAULT NULL,
@@ -212,6 +214,7 @@ CREATE TABLE `survey_eat` (
 -- ----------------------------
 -- Records of survey_eat
 -- ----------------------------
+INSERT INTO `survey_eat` VALUES ('2', '5-7天', '5-7天', '3-4天', '3-4天', '5-7天', '5-7天', '5-7天', '3-4天', '3-4天', '3-4天', '12两以上', '基本不吃', '5-9两', '略淡', '是', '卷烟', '55', '33', '有', '99', '不喝', '每天2次', null, null, '11', '', '', '', '', '', '', '', '', '很不满意', '', '', '', '', '');
 
 -- ----------------------------
 -- Table structure for `survey_health`
@@ -296,6 +299,7 @@ CREATE TABLE `survey_health` (
 -- ----------------------------
 -- Records of survey_health
 -- ----------------------------
+INSERT INTO `survey_health` VALUES ('2', '偶尔', '没有', '没有', '偶尔', '没有', '没有', '没有', '偶尔', '没有', '没有', '没有', '没有', '没有', '没有', '没有', '没有', '没有', '没有', '没有', '没有', '没有', '目前患有;在医生指导下治疗', '', '', '', '', '', '', '', '', '', '从未患过', '', '从未患过', '从未患过', '', '', '', '', '', '', '', '', '', '曾经患过;在医生指导下治疗', '', '', '', '', '否', '否', '不知道', '是', '不知道', '是', '否', '否', '否', '否', '66', '是;77', '44', '', '', '否', '否', '', '', '', '', '');
 
 -- ----------------------------
 -- Table structure for `user`
@@ -318,12 +322,14 @@ CREATE TABLE `user` (
   `password` varchar(255) DEFAULT NULL,
   `birth` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('2', null, null, null, null, null, null, null, null, null, 'gaotong@11.com', null, null, '19902055', null);
+INSERT INTO `user` VALUES ('2', '高通', '', '男', 'dfsdf', '行政人员', '高中及以下', '未婚', '北方工业大学', '15652525910', 'gaotong@11.com', '满族', 'henan', '19902055', '1990-01-16');
 INSERT INTO `user` VALUES ('3', 'aaaaa', null, null, 'dddddd', null, null, null, null, null, null, null, null, null, null);
 INSERT INTO `user` VALUES ('4', null, null, null, null, null, null, null, null, null, 'gaotong@163.com', null, null, '19902055', null);
 INSERT INTO `user` VALUES ('5', '123', null, null, null, null, null, null, null, null, null, null, null, null, null);
+INSERT INTO `user` VALUES ('6', '', '', '', '', '', '', '', '', '', 'gaotong@test.com', '', '', '19902055', '');
+INSERT INTO `user` VALUES ('7', '', '', '', '', '', '', '', '', '', 'test@test.com', '', '', '19902055', '');

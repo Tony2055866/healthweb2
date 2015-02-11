@@ -34,18 +34,7 @@
       response.sendRedirect(request.getContextPath() + "/survey.jsp?result=error");
 
     }
-  }else if(type.equals("survey_eat")){
-    try {
-      user = BeanUtil.getBean(request, User.class, user);
-      UserDAO dao = new UserDAO();
-      dao.update(user);
-      logger.info("save user : " + user );
-      response.sendRedirect(request.getContextPath() + "/survey_eat.jsp?result=success");
-      return;
-    } catch (Exception e) {
-      response.sendRedirect(request.getContextPath() + "/survey_eat.jsp?result=error");
-      e.printStackTrace();
-    }
+
   }else if(type.equals("survey_health")){
     try{
       SurveyHealthDAO dao = new SurveyHealthDAO();
@@ -63,6 +52,7 @@
     try{
       SurveyEatDAO dao = new SurveyEatDAO();
       SurveyEat eat = BeanUtil.getBeanNoNullStringFromRequest(request, SurveyEat.class, null);
+      logger.info("SurveyEatDAO update eat: " +eat.toString());
       eat.setUid(user.getId());
       dao.saveOrUpdate(eat);
       response.sendRedirect(request.getContextPath() + "/survey_eat.jsp?result=success");
@@ -71,6 +61,19 @@
       response.sendRedirect(request.getContextPath() + "/survey_eat.jsp?result=error");
     }
    return;
+  }else if(type.equals("survey_check")){
+      try{
+          SurveyCheckDAO dao = new SurveyCheckDAO();
+          SurveyCheck check = BeanUtil.getBeanNoNullStringFromRequest(request, SurveyCheck.class, null);
+          logger.info("SurveyCheckDAO update check: " +check.toString());
+          check.setUid(user.getId());
+          dao.saveOrUpdate(check);
+          response.sendRedirect(request.getContextPath() + "/survey_check.jsp?result=success");
+          return;
+      }catch (Exception e){
+          e.printStackTrace();
+          response.sendRedirect(request.getContextPath() + "/survey_check.jsp?result=error");
+      }
   }
 
 %>

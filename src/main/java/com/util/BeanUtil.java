@@ -49,7 +49,6 @@ public class BeanUtil {
 	}
 	
 	
-	
 	public static <T> T  getBeanForRadioPage2(HttpServletRequest req, Class<T> c, T t){
 		try {
 			if(t == null)

@@ -25,7 +25,11 @@ CREATE TABLE `survey_eat` (
   `whenJieYan` varchar(255) DEFAULT NULL,
   `isdrink` varchar(255) DEFAULT NULL,
   `howlongDrink` varchar(255) DEFAULT NULL,
-  `howmuchDrink` varchar(255) DEFAULT NULL,
+
+  `howmuchDrink1` varchar(255) DEFAULT NULL,
+   `howmuchDrink2` varchar(255) DEFAULT NULL,
+  `howmuchDrink3` varchar(255) DEFAULT NULL,
+
   `ismustDrink` varchar(255) DEFAULT NULL,
   `work` varchar(255) DEFAULT NULL,
   `jiaotong` varchar(255) DEFAULT NULL,

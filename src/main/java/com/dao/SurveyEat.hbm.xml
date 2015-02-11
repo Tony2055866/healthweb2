@@ -76,8 +76,14 @@
         <property name="howlongDrink" type="java.lang.String">
             <column name="howlongDrink" />
         </property>
-        <property name="howmuchDrink" type="java.lang.String">
-            <column name="howmuchDrink" />
+        <property name="howmuchDrink1" type="java.lang.String">
+            <column name="howmuchDrink1" />
+        </property>
+        <property name="howmuchDrink2" type="java.lang.String">
+            <column name="howmuchDrink2" />
+        </property>
+        <property name="howmuchDrink3" type="java.lang.String">
+            <column name="howmuchDrink3" />
         </property>
         <property name="ismustDrink" type="java.lang.String">
             <column name="ismustDrink" />

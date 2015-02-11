@@ -1,40 +1,61 @@
+<%@ page import="com.dao.User" %>
+<%@ page import="com.dao.SurveyCheck" %>
+<%@ page import="com.dao.SurveyCheckDAO" %>
+<%@ page import="com.util.BeanUtil" %>
+<%@ page import="com.google.gson.Gson" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <jsp:include page="head.jsp"></jsp:include>
 
 <body style="background-color:#f8f8f8">
-
 <%
-String labels1[] = {"早博","ST- T改变","房颤"};
+	if( session.getAttribute("user") == null ){
+		response.sendRedirect("login.jsp?type=6");
+		return;
+	}
+	User user = (User)session.getAttribute("user");
+	SurveyCheckDAO dao = new SurveyCheckDAO();
+	dao.getSession().clear();
+	SurveyCheck check = dao.findById(user.getId());
+	check = BeanUtil.getBeanNoNullString(request, SurveyCheck.class, check);
+	String healthJson = new Gson().toJson(check);
 %>
+<script>
+var check = <%=healthJson%>;
+$(function(){
+	updatePage(check);
+});
+
+</script>
 
 <div class="contentDiv">
 <%--<h1 align="center">个人健康状况及家族病史</h1>
    --%>
    <h1 align="center">个人健康状况及生活方式问卷</h1>
    
-   <form class="form-horizontal" id="submitBtn">
+   <form class="form-horizontal" id="submitBtn" method="POST" action="<%=request.getContextPath()%>/servlet/SurveySubmit.jsp">
+	   <input type="hidden" value="survey_check" name="type">
    <div id="legend" class="">
         <legend >第四部分：体检指标
         </legend>
     </div>
 	
-	一般检查
+	<div class="titleDiv">一般检查</div>
 	<table>
 		<tr>
 			<td>
 				<div class="form-group">
-				  <label class="col-md-5 control-label" for="textinput">身高(cm)</label>  
+				  <label class="col-md-5 control-label" >身高(cm)</label>  
 				  <div class="col-md-5">
-				  <input id="textinput" name="textinput" type="text" placeholder="" class="form-control input-md">
+				  <input  name="high" type="text" placeholder="" class="form-control input-md">
 				  </div>
 				</div>
 			</td>
 			<td>
 				<div class="form-group">
-				  <label class="col-md-5 control-label" for="textinput">体重(kg)</label>  
+				  <label class="col-md-5 control-label" >体重(kg)</label>  
 				  <div class="col-md-5">
-				  <input id="textinput" name="textinput" type="text" placeholder="" class="form-control input-md">
+				  <input  name="weight" type="text" placeholder="" class="form-control input-md">
 				  </div>
 				</div>
 		    </td>
@@ -43,18 +64,18 @@ String labels1[] = {"早博","ST- T改变","房颤"};
 		<tr>
 			<td>
 				<div class="form-group">
-				  <label class="col-md-5 control-label" for="textinput">收缩压(高压)mmHg</label>  
+				  <label class="col-md-5 control-label" >收缩压(高压)mmHg</label>  
 				  <div class="col-md-5">
-				  <input id="textinput" name="textinput" type="text" placeholder="" class="form-control input-md">
+				  <input  name="gaoya" type="text" placeholder="" class="form-control input-md">
 				  </div>
 				</div>
 			</td>
 			
 			<td>
 				<div class="form-group">
-				  <label class="col-md-5 control-label" for="textinput">舒张压(低压)mmHg</label>  
+				  <label class="col-md-5 control-label" >舒张压(低压)mmHg</label>  
 				  <div class="col-md-5">
-				  <input id="textinput" name="textinput" type="text" placeholder="" class="form-control input-md">
+				  <input  name="diya" type="text" placeholder="" class="form-control input-md">
 				  </div>
 				</div>
 			</td>
@@ -64,34 +85,34 @@ String labels1[] = {"早博","ST- T改变","房颤"};
 		<tr>
 			<td>
 				<div class="form-group">
-				  <label class="col-md-5 control-label" for="textinput">腰围(cm)</label>  
+				  <label class="col-md-5 control-label" >腰围(cm)</label>  
 				  <div class="col-md-5">
-				  <input id="textinput" name="textinput" type="text" placeholder="" class="form-control input-md">
+				  <input  name="xiongwei" type="text" placeholder="" class="form-control input-md">
 				  </div>
 				</div>
 			</td>
 		
 		</tr>
 	</table>
-	
-	 
-	心电图检查
+
+
+	   <div class="titleDiv">心电图检查</div>
      <table width="100%" >
 		<tr width="100%" >
 			<td >
 				<div class="row">       
-		        <label for="isWeiNai" class="col-sm-5 control-label">早博</label>
+		        <label  class="col-sm-5 control-label">早博</label>
 		        <div class="col-sm-5">
-		        <label class="radio-inline"> <input type="radio" name="isWeiNai"  value="有" >有 </label>
-		        <label class="radio-inline"> <input type="radio" name="isWeiNai"  value="无"> 无 </label>
+		        <label class="radio-inline"> <input type="radio" name="zaobo"  value="有" >有 </label>
+		        <label class="radio-inline"> <input type="radio" name="zaobo"  value="无"> 无 </label>
 		        </div></div>
 			</td>
 			<td >
 				<div class="row">       
-		        <label for="isWeiNai" class="col-sm-5 control-label">ST- T改变</label>
+		        <label  class="col-sm-5 control-label">ST- T改变</label>
 		        <div class="col-sm-5">
-		        <label class="radio-inline"> <input type="radio" name="isWeiNai"  value="有" >有 </label>
-		        <label class="radio-inline"> <input type="radio" name="isWeiNai"  value="无"> 无 </label>
+		        <label class="radio-inline"> <input type="radio" name="stt"  value="有" >有 </label>
+		        <label class="radio-inline"> <input type="radio" name="stt"  value="无"> 无 </label>
 		        </div></div>
 				
 		    </td>
@@ -100,26 +121,26 @@ String labels1[] = {"早博","ST- T改变","房颤"};
 		<tr>
 			<td>
 				<div class="form-group">
-				  <label class="col-md-5 control-label" for="textinput">房颤</label>  
+				  <label class="col-md-5 control-label" >房颤</label>  
 				  <div class="col-md-5">
-			        <label class="radio-inline"> <input type="radio" name="hcheck"  value="有" >有 </label>
-			        <label class="radio-inline"> <input type="radio" name="hcheck"  value="无"> 无 </label>
+			        <label class="radio-inline"> <input type="radio" name="fangchan"  value="有" >有 </label>
+			        <label class="radio-inline"> <input type="radio" name="fangchan"  value="无"> 无 </label>
 			        </div>
 				</div>
 			</td>
 			<td>
 				<div class="form-group">
-				  <label class="col-md-5 control-label" for="textinput">左心室肥大 </label>  
+				  <label class="col-md-5 control-label" >左心室肥大 </label>  
 				  <div class="col-md-5">
-			        <label class="radio-inline"> <input type="radio" name="hcheck"  value="有" >有 </label>
-			        <label class="radio-inline"> <input type="radio" name="hcheck"  value="无"> 无 </label>
+			        <label class="radio-inline"> <input type="radio" name="zuoxinshi"  value="有" >有 </label>
+			        <label class="radio-inline"> <input type="radio" name="zuoxinshi"  value="无"> 无 </label>
 			        </div>
 				</div>
 		    </td>
 		</tr>
 		</table>
-		
-		3.X线和B超检查
+
+	   <div class="titleDiv">X线和B超检查</div>
 		<table width="100%">
 		<%
 			String labels[]  ={"肺部阴影","心界扩大","肝脏肿大","肝脏肿块","脂肪肝","胆结石","肾结石","乳房良性结节或肿块"} ;
@@ -128,19 +149,19 @@ String labels1[] = {"早博","ST- T改变","房颤"};
 		<tr width="100%">
 			<td>
 				<div class="form-group">
-				  <label class="col-md-5 control-label" for="textinput"><%=labels[i*2] %></label>  
+				  <label class="col-md-5 control-label" ><%=labels[i*2] %></label>  
 				  <div class="col-md-5">
-			        <label class="radio-inline"> <input type="radio" name="hcheck"  value="有" >有 </label>
-			        <label class="radio-inline"> <input type="radio" name="hcheck"  value="无"> 无 </label>
+			        <label class="radio-inline"> <input type="radio" name="xb0<%=(i*2+1)%>"  value="有" >有 </label>
+			        <label class="radio-inline"> <input type="radio" name="xb0<%=(i*2+1)%>"  value="无"> 无 </label>
 			        </div>
 				</div>
 			</td>
 			<td>
 				<div class="form-group">
-				  <label class="col-md-5 control-label" for="textinput"><%=labels[i*2+1] %> </label>  
+				  <label class="col-md-5 control-label" ><%=labels[i*2+1] %> </label>  
 				  <div class="col-md-5">
-			        <label class="radio-inline"> <input type="radio" name="hcheck"  value="有" >有 </label>
-			        <label class="radio-inline"> <input type="radio" name="hcheck"  value="无"> 无 </label>
+			        <label class="radio-inline"> <input type="radio" name="xb0<%=(i*2+2)%>"  value="有" >有 </label>
+			        <label class="radio-inline"> <input type="radio" name="xb0<%=(i*2+2)%>"  value="无"> 无 </label>
 			        </div>
 				</div>
 		    </td>
@@ -148,7 +169,7 @@ String labels1[] = {"早博","ST- T改变","房颤"};
 		<%} %>
 		</table>
 
-		四、实验室检查
+	   <div class="titleDiv">实验室检查</div>
 		<table width="80%" align="center">
 		<%
 		
@@ -177,7 +198,7 @@ String labels1[] = {"早博","ST- T改变","房颤"};
 			<div class="form-group">
 			    <div class="input-group">
 			      <div class="input-group-addon" style="width:220px;"><%=labels2[i] %></div>
-			      <input type="number" class="form-control" id="exampleInputAmount" >
+			      <input type="number" class="form-control" id="exampleInputAmount" name="sys0<%=(i+1)%>">
 			      <div class="input-group-addon">mmkg</div>
 			    </div>
 			  </div>
