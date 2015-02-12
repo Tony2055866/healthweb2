@@ -4,8 +4,8 @@
 <%@ page import="org.slf4j.Logger" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
-
-  Logger logger = LoggerFactory.getLogger(this.getClass());
+    
+  Logger logger = LoggerFactory.getLogger("SurveySubmit.jsp");
   request.setCharacterEncoding("UTF-8");
   //response.setContentType("text/html");
   String type = request.getParameter("type");
