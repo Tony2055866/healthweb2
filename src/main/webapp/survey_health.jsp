@@ -91,8 +91,8 @@ health = BeanUtil.getBeanNoNullString(request, SurveyHealth.class, health);
 	        <label class="radio-inline"> <input type="radio" name="<%=names[i] %>"  value="经常"> 经常 </label>
 	        </div>--%>
 			  <div class="row">
-				  <label class="col-sm-4 control-label"><%=labels[i] %>:</label>
-				  <div class="col-sm-4">
+				  <label class="col-sm-3 control-label"><%=labels[i] %>:</label>
+				  <div class="col-sm-7">
 					  <select class="input-xlarge" style="width: 100px;" name="<%=names[i] %>">
 						  <%
 							  Field f = health.getClass().getDeclaredField(names[i]);
