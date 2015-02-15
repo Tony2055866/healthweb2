@@ -71,6 +71,16 @@
         })
  	}
  }
+
+ function selectChange(ele, name, changeIndex){
+	//alert(ele.selectedIndex);
+	 var div = $("#"+name+"Div");
+	 if(changeIndex == ele.selectedIndex){
+		 div.show(100);
+	 }else{
+		 div.hide(100);
+	 }
+ }
  
  function updatePage(obj){
 	 for(var pname in obj){

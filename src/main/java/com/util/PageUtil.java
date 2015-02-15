@@ -5,7 +5,7 @@ public class PageUtil {
 		String res = "";
 		for(String option:options){
 			if(option.equals(value))
-				res += "<option selected=\"selected\">"+option+"</option>";
+				res += "<option selected=\"selected\" >"+option+"</option>";
 			else
 				res += "<option>"+option+"</option>";
 		}

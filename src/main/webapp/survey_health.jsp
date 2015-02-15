@@ -108,78 +108,68 @@ health = BeanUtil.getBeanNoNullString(request, SurveyHealth.class, health);
     </fieldset>
       	<div class="titleDiv">您目前或曾经患过以下疾病吗?</div>
       	<fieldset>
-      <%for(int i=0; i<5; i++){
+      <%for(int i=0; i<labels3.length; i++){
        %>
 			<div class="row">
 				<label class="col-sm-3 control-label"><%=labels3[i] %>:</label>
 				<div class="col-sm-2">
-					<select class="input-xlarge" style="width: 100px;" name="<%=names3[i] %>">
+					<select class="input-xlarge" style="width: 100px;" name="<%=names3[i] %>" onchange="selectChange(this,'<%=names3[i] %>',2)">
 						<%
 							Field f = health.getClass().getDeclaredField(names3[i]);
 							f.setAccessible(true);
 							//System.out.println("health.getClass().getDeclaredField(names[i]) :" + f.get(health).toString() + "  " + names[i]);
-							out.println(PageUtil.getOptions(new String[]{"从未患过", "曾经患过",
-									"目前患有"}, f.get(health).toString() )); %>
+							out.println(PageUtil.getOptions(new String[]{"从未患过", "曾经患过", "目前患有"},
+									f.get(health).toString() )); %>
 					</select>
 				</div>
-				<%if(i >= 3){%>
-				<label class="col-sm-2 control-label">您如何治疗的:</label>
-				<div class="col-sm-3">
-					<select class="input-xlarge" style="width: 160px;" name="<%=names3[i] %>">
-						<%
-							f.setAccessible(true);
-							out.println(PageUtil.getOptions(new String[]{"在医生指导下治疗", "自我治疗",
-									"未治疗"}, f.get(health).toString() )); %>
-					</select>
+				<div id="<%=names3[i] %>Div" style="display: none;">
+					<label class="col-sm-2 control-label">您如何治疗的:</label>
+					<div class="col-sm-3">
+						<select class="input-xlarge" style="width: 160px;" name="<%=names3[i] %>" >
+							<%
+								f.setAccessible(true);
+								out.println(PageUtil.getOptions(new String[]{"在医生指导下治疗", "自我治疗","未治疗"},
+										f.get(health).toString() )); %>
+						</select>
+					</div>
 				</div>
-				<%}%>
+
 			</div>
        <%} %>
 		</fieldset>
 
 	   <fieldset>
-			<%for(int i=5; i<labels3.length; i++){
-			%>
-			<label class="col-sm-4 control-label"><%=labels3[i] %>:</label>
-			<div class="col-sm-8"   id="outdiv<%=i %>">
-				<label class="radio-inline">
-					<input type="radio" value="从未患过" name="<%=names3[i] %>" id="<%=names3[i] %>1" onclick="checkYes(this);">从未患过</label>
-				<label class="radio-inline">
-					<input type="radio" value="曾经患过" name="<%=names3[i] %>" id="<%=names3[i] %>3" onclick="checkYes(this);">曾经患过</label>
-				<label class="radio-inline">
-					<input type="radio" value="目前患有" name="<%=names3[i]%>" id="<%=names3[i] %>2" onclick="checkYes(this);">目前患有
-				</label>
-
-				<div id="<%=names3[i] %>Div" style="display: none; padding-left: 0px;" >
-					<label class="col-sm-3 control-label">您如何治疗的</label>
-					<label class="radio-inline">
-						<input type="radio" value="在医生指导下治疗" name="<%=names3[i] %>0" >在医生指导下治疗</label>
-					<label class="radio-inline">
-						<input type="radio" value="自我治疗" name="<%=names3[i] %>0">自我治疗</label>
-					<label class="radio-inline">
-						<input type="radio" value="未治疗" name="<%=names3[i] %>0" >未治疗
-					</label>
-				</div>
-
-			</div>
-			<%} %>
 
        <label class="col-sm-4 control-label">其他疾病（如有，请列出）</label>
         <div class="col-sm-8">
-            <input type="text" class="form-control col-sm-5" name="hasOther" placeholder="其他疾病"/>
+            <input type="text" class="form-control col-sm-4" name="hasOther" placeholder="其他疾病"/>
         </div>
         <br>
 		</fieldset>
+
+
         <div class="titleDiv">您父母或兄弟姐妹患有或患过以下疾病吗?</div>
         <fieldset>
          <%for(int i=0; i<labels2.length; i++){
        %>
-       <label class="col-sm-4 control-label"><%=labels2[i] %>:</label>
+			<div class="row">
+				<label class="col-sm-3 control-label"><%=labels2[i] %>:</label>
+				<div class="col-sm-7">
+					<select class="input-xlarge" style="width: 100px;" name="<%=names2[i] %>">
+						<%
+							Field f = health.getClass().getDeclaredField(names[i]);
+							f.setAccessible(true);
+							out.println(PageUtil.getOptions(new String[]{"否", "是",
+									"不知道"}, f.get(health).toString() )); %>
+					</select>
+				</div>
+			</div>
+      <%-- <label class="col-sm-4 control-label"><%=labels2[i] %>:</label>
     	<div class="col-sm-8">
         <label class="radio-inline"> <input type="radio" name="<%=names2[i] %>"  value="否" >否 </label>
         <label class="radio-inline"> <input type="radio" name="<%=names2[i] %>"  value="是"> 是 </label>
         <label class="radio-inline"> <input type="radio" name="<%=names2[i] %>" value="不知道"> 不知道 </label>
-        </div>
+        </div>--%>
        <%} %>
        </fieldset>
        
