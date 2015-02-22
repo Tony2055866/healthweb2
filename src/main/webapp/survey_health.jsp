@@ -74,7 +74,7 @@ health = BeanUtil.getBeanNoNullString(request, SurveyHealth.class, health);
    <h1 align="center">个人健康状况及生活方式问卷</h1>
    
    <form class="form-horizontal" id="submitBtn" method="POST" action="<%=request.getContextPath()%>/servlet/SurveySubmit.jsp">
-   <input type="hidden" value="survey_health" name="type">
+   <input  type="hidden" value="survey_health" name="type">
    <div id="legend" class="">
         <legend >第二部分：个人健康状况及家族病史
         </legend>
@@ -86,14 +86,14 @@ health = BeanUtil.getBeanNoNullString(request, SurveyHealth.class, health);
 	       %>
 	       <%--<label class="col-sm-4 control-label"><%=labels[i] %>:</label>
 	    	<div class="col-sm-8">
-	        <label class="radio-inline"> <input  type="radio" name="<%=names[i] %>"  value="没有" > 没有 </label>
-	        <label class="radio-inline"> <input type="radio" name="<%=names[i] %>"  value="偶尔"> 偶尔 </label>
-	        <label class="radio-inline"> <input type="radio" name="<%=names[i] %>"  value="经常"> 经常 </label>
+	        <label class="radio-inline"> <input required  type="radio" name="<%=names[i] %>"  value="没有" > 没有 </label>
+	        <label class="radio-inline"> <input required type="radio" name="<%=names[i] %>"  value="偶尔"> 偶尔 </label>
+	        <label class="radio-inline"> <input required type="radio" name="<%=names[i] %>"  value="经常"> 经常 </label>
 	        </div>--%>
 			  <div class="row">
 				  <label class="col-sm-3 control-label"><%=labels[i] %>:</label>
 				  <div class="col-sm-7">
-					  <select class="input-xlarge" style="width: 100px;" name="<%=names[i] %>">
+					  <select class="input required-xlarge" style="width: 100px;" name="<%=names[i] %>">
 						  <%
 							  Field f = health.getClass().getDeclaredField(names[i]);
 							  f.setAccessible(true);
@@ -113,7 +113,7 @@ health = BeanUtil.getBeanNoNullString(request, SurveyHealth.class, health);
 			<div class="row">
 				<label class="col-sm-3 control-label"><%=labels3[i] %>:</label>
 				<div class="col-sm-2">
-					<select class="input-xlarge" style="width: 100px;" name="<%=names3[i] %>" onchange="selectChange(this,'<%=names3[i] %>',2)">
+					<select class="input required-xlarge" style="width: 100px;" name="<%=names3[i] %>" onchange="selectChange(this,'<%=names3[i] %>',2)">
 						<%
 							Field f = health.getClass().getDeclaredField(names3[i]);
 							f.setAccessible(true);
@@ -125,7 +125,7 @@ health = BeanUtil.getBeanNoNullString(request, SurveyHealth.class, health);
 				<div id="<%=names3[i] %>Div" style="display: none;">
 					<label class="col-sm-2 control-label">您如何治疗的:</label>
 					<div class="col-sm-3">
-						<select class="input-xlarge" style="width: 160px;" name="<%=names3[i] %>" >
+						<select class="input required-xlarge" style="width: 160px;" name="<%=names3[i] %>" >
 							<%
 								f.setAccessible(true);
 								out.println(PageUtil.getOptions(new String[]{"在医生指导下治疗", "自我治疗","未治疗"},
@@ -142,7 +142,7 @@ health = BeanUtil.getBeanNoNullString(request, SurveyHealth.class, health);
 
        <label class="col-sm-4 control-label">其他疾病（如有，请列出）</label>
         <div class="col-sm-8">
-            <input type="text" class="form-control col-sm-4" name="hasOther" placeholder="其他疾病"/>
+            <input required type="text" class="form-control col-sm-4" name="hasOther" placeholder="其他疾病"/>
         </div>
         <br>
 		</fieldset>
@@ -155,7 +155,7 @@ health = BeanUtil.getBeanNoNullString(request, SurveyHealth.class, health);
 			<div class="row">
 				<label class="col-sm-3 control-label"><%=labels2[i] %>:</label>
 				<div class="col-sm-7">
-					<select class="input-xlarge" style="width: 100px;" name="<%=names2[i] %>">
+					<select class="input required-xlarge" style="width: 100px;" name="<%=names2[i] %>">
 						<%
 							Field f = health.getClass().getDeclaredField(names[i]);
 							f.setAccessible(true);
@@ -166,9 +166,9 @@ health = BeanUtil.getBeanNoNullString(request, SurveyHealth.class, health);
 			</div>
       <%-- <label class="col-sm-4 control-label"><%=labels2[i] %>:</label>
     	<div class="col-sm-8">
-        <label class="radio-inline"> <input type="radio" name="<%=names2[i] %>"  value="否" >否 </label>
-        <label class="radio-inline"> <input type="radio" name="<%=names2[i] %>"  value="是"> 是 </label>
-        <label class="radio-inline"> <input type="radio" name="<%=names2[i] %>" value="不知道"> 不知道 </label>
+        <label class="radio-inline"> <input required type="radio" name="<%=names2[i] %>"  value="否" >否 </label>
+        <label class="radio-inline"> <input required type="radio" name="<%=names2[i] %>"  value="是"> 是 </label>
+        <label class="radio-inline"> <input required type="radio" name="<%=names2[i] %>" value="不知道"> 不知道 </label>
         </div>--%>
        <%} %>
        </fieldset>
@@ -177,24 +177,24 @@ health = BeanUtil.getBeanNoNullString(request, SurveyHealth.class, health);
        <fieldset>
 	       <div class="row">
 		       <label for="firstYj" class="col-sm-4 control-label">您第一次来月经的年龄是(岁)：</label>
-		        <div class="col-sm-2"><input type="number" class="form-control "  name="firstYj" />
+		        <div class="col-sm-2"><input required type="number" class="form-control "  name="firstYj" />
 		        </div>
 	        </div>
 	        
 	        <div class="row">
 		        <label for="name" class="col-sm-4 control-label">如果已婚，您结婚年龄是：</label>
-		        <div class="col-sm-2"><input type="number" class="form-control"  name="ageOfM" />
+		        <div class="col-sm-2"><input required type="number" class="form-control"  name="ageOfM" />
 		        </div>
 	        </div>
 	        
 	        <div class="row">
 		        <label for="isJueJing" class="col-sm-4 control-label">您是否已经绝经：</label>
 		        <div class="col-sm-8">
-			        <label class="radio-inline"> <input type="radio" name="isJueJing" id="isJueJing1" value="否" onclick="checkYes(this);">否 </label>
-			        <label class="radio-inline"> <input type="radio" name="isJueJing" id="isJueJing2" value="是" onclick="checkYes(this);"> 是 </label>
+			        <label class="radio-inline"> <input required type="radio" name="isJueJing" id="isJueJing1" value="否" onclick="checkYes(this);">否 </label>
+			        <label class="radio-inline"> <input required type="radio" name="isJueJing" id="isJueJing2" value="是" onclick="checkYes(this);"> 是 </label>
 		        <div class="form-group " id="isJueJingDiv" style="display: none">
 			        <label for="isJueJing0" class="col-sm-4 control-label">绝经年龄?</label>
-			        <label><input type="number"  class="form-control"  name="isJueJing0" id="ageOfJueJing" /></label>
+			        <label><input required type="number"  class="form-control"  name="isJueJing0" id="ageOfJueJing" /></label>
 		        </div>
 		        </div>
 	        </div>
@@ -202,78 +202,78 @@ health = BeanUtil.getBeanNoNullString(request, SurveyHealth.class, health);
 	         <div class="row">     
 	        <label for="isJueJing" class="col-sm-4 control-label">您是否已经生育小孩?</label>
 	        <div class="col-sm-8">
-	        <label class="radio-inline"> <input type="radio" name="isHasChild" id="isHasChild1" value="否" onclick="checkYes(this);">否 </label>
-	        <label class="radio-inline"> <input type="radio" name="isHasChild" id="isHasChild2" value="是" onclick="checkYes(this);"> 是 </label>
+	        <label class="radio-inline"> <input required type="radio" name="isHasChild" id="isHasChild1" value="否" onclick="checkYes(this);">否 </label>
+	        <label class="radio-inline"> <input required type="radio" name="isHasChild" id="isHasChild2" value="是" onclick="checkYes(this);"> 是 </label>
 	        <div class="form-group" id="isHasChildDiv" style="display: none;">
 		        <label for="isHasChildYes" class="col-sm-4 control-label">生第一胎的年龄?</label>
-		        <label><input type="number" class="form-control" name="isHasChild0" /></label>
+		        <label><input required type="number" class="form-control" name="isHasChild0" /></label>
 	        </div>
 	        </div></div>
 	         
 	         <div class="row">       
 	        <label for="isWeiNai" class="col-sm-4 control-label">您是否哺养过孩子（喂奶）?</label>
 	        <div class="col-sm-8">
-	        <label class="radio-inline"> <input type="radio" name="isWeiNai" id="isWeiNai1" value="否" >否 </label>
-	        <label class="radio-inline"> <input type="radio" name="isWeiNai" id="isWeiNai2" value="是"> 是 </label>
+	        <label class="radio-inline"> <input required type="radio" name="isWeiNai" id="isWeiNai1" value="否" >否 </label>
+	        <label class="radio-inline"> <input required type="radio" name="isWeiNai" id="isWeiNai2" value="是"> 是 </label>
 	        </div></div>
 	        
 	        <label for="hasGongJing" class="col-sm-4 control-label">您是否做过宫颈细胞学涂片检查?</label>
 	        <div class="col-sm-8">
-	        <label class="radio-inline"> <input type="radio" name="hasGongJing" id="hasGongJing1" value="否" >否 </label>
-	        <label class="radio-inline"> <input type="radio" name="hasGongJing" id="hasGongJing2" value="是" > 是 </label>
-	        <label class="radio-inline"> <input type="radio" name="hasGongJing" id="hasGongJing2" value="不知道"> 不知道 </label>
+	        <label class="radio-inline"> <input required type="radio" name="hasGongJing" id="hasGongJing1" value="否" >否 </label>
+	        <label class="radio-inline"> <input required type="radio" name="hasGongJing" id="hasGongJing2" value="是" > 是 </label>
+	        <label class="radio-inline"> <input required type="radio" name="hasGongJing" id="hasGongJing2" value="不知道"> 不知道 </label>
 	        </div>
 	        
 	       <div class="row">
 	        <label for="fuyongCiJs" class="col-sm-4 control-label"> 您是否在服用雌激素类药物?</label>
 	        <div class="col-sm-8" id="isHasChildpdiv">
-	        <label class="radio-inline"> <input type="radio" name="fuyongCiJs" id="fuyongCiJs1" value="否" onclick="checkYes(this);">否 </label>
-	        <label class="radio-inline"> <input type="radio" name="fuyongCiJs" id="fuyongCiJs2" value="是" onclick="checkYes(this);"> 是 </label>
+	        <label class="radio-inline"> <input required type="radio" name="fuyongCiJs" id="fuyongCiJs1" value="否" onclick="checkYes(this);">否 </label>
+	        <label class="radio-inline"> <input required type="radio" name="fuyongCiJs" id="fuyongCiJs2" value="是" onclick="checkYes(this);"> 是 </label>
 	        <div class="form-group " id="fuyongCiJsDiv" style="display: none">
 	        <label for="ageOfJueJing" class="col-sm-4 control-label">您服用的时间(年)?</label>
-	        <label><input type="number" class="form-control" name="fuyongCiJs0"  /></label>
+	        <label><input required type="number" class="form-control" name="fuyongCiJs0"  /></label>
 	        </div>
 	        </div></div>
 	        
 	        <div class="row">
 	        <label for="hasRuXianZs" class="col-sm-4 control-label">您患有或患过乳腺增生症吗?</label>
 	        <div class="col-sm-8">
-	        <label class="radio-inline"> <input type="radio" name="hasRuXianZs" value="否" >否 </label>
-	        <label class="radio-inline"> <input type="radio" name="hasRuXianZs"  value="是" > 是 </label>
-	        <label class="radio-inline"> <input type="radio" name="hasRuXianZs"  value="不知道"> 不知道 </label>
+	        <label class="radio-inline"> <input required type="radio" name="hasRuXianZs" value="否" >否 </label>
+	        <label class="radio-inline"> <input required type="radio" name="hasRuXianZs"  value="是" > 是 </label>
+	        <label class="radio-inline"> <input required type="radio" name="hasRuXianZs"  value="不知道"> 不知道 </label>
 	        </div></div>
 	        
 	        <div class="row">
 	        <label for="hasRuXianAi" class="col-sm-4 control-label">您患有或患过乳腺癌吗? </label>
 	        <div class="col-sm-8">
-	        <label class="radio-inline"> <input type="radio" name="hasRuXianAi"  value="否" >否 </label>
-	        <label class="radio-inline"> <input type="radio" name="hasRuXianAi"  value="是" > 是 </label>
-	        <label class="radio-inline"> <input type="radio" name="hasRuXianAi" value="不知道"> 不知道 </label>
+	        <label class="radio-inline"> <input required type="radio" name="hasRuXianAi"  value="否" >否 </label>
+	        <label class="radio-inline"> <input required type="radio" name="hasRuXianAi"  value="是" > 是 </label>
+	        <label class="radio-inline"> <input required type="radio" name="hasRuXianAi" value="不知道"> 不知道 </label>
 	        </div></div>
 	        
 	        <div class="row">
 	        <label for="hasOruXianAi" class="col-sm-4 control-label">您母亲和姐妹患过乳腺癌吗?</label>
 	        <div class="col-sm-8">
-	        <label class="radio-inline"> <input type="radio" name="hasOruXianAi"  value="否" >否 </label>
-	        <label class="radio-inline"> <input type="radio" name="hasOruXianAi"  value="是" > 是 </label>
-	        <label class="radio-inline"> <input type="radio" name="hasOruXianAi"  value="不知道"> 不知道 </label>
+	        <label class="radio-inline"> <input required type="radio" name="hasOruXianAi"  value="否" >否 </label>
+	        <label class="radio-inline"> <input required type="radio" name="hasOruXianAi"  value="是" > 是 </label>
+	        <label class="radio-inline"> <input required type="radio" name="hasOruXianAi"  value="不知道"> 不知道 </label>
 	        </div></div>
 	       
 	       <div class="row">
 	        <label for="howCheckRuXianAi" class="col-sm-4 control-label"> 您多长时间做一次乳腺检查?</label>
 	        <div class="col-sm-8">
-	        <label class="radio-inline"> <input type="radio" name="howCheckRuXianAi"  value="1年及以下" >1年及以下 </label>
-	        <label class="radio-inline"> <input type="radio" name="howCheckRuXianAi"  value="2年" >2年 </label>
-	        <label class="radio-inline"> <input type="radio" name="howCheckRuXianAi"  value="3年及以上">3年及以上</label>
-	        <label class="radio-inline"> <input type="radio" name="howCheckRuXianAi"  value="不做">不做 </label>
+	        <label class="radio-inline"> <input required type="radio" name="howCheckRuXianAi"  value="1年及以下" >1年及以下 </label>
+	        <label class="radio-inline"> <input required type="radio" name="howCheckRuXianAi"  value="2年" >2年 </label>
+	        <label class="radio-inline"> <input required type="radio" name="howCheckRuXianAi"  value="3年及以上">3年及以上</label>
+	        <label class="radio-inline"> <input required type="radio" name="howCheckRuXianAi"  value="不做">不做 </label>
 	        </div></div>
 	        
 	        <div class="row">
 	        <label for="isCookOfthen" class="col-sm-4 control-label">您是否经常下厨(每周5天以上)?</label>
 	        <div class="col-sm-8">
-	        <label class="radio-inline"> <input type="radio" name="isCookOfthen"  value="否" >否 </label>
-	        <label class="radio-inline"> <input type="radio" name="isCookOfthen"  value="是" > 是 </label>
-	        <label class="radio-inline"> <input type="radio" name="isCookOfthen"  value="不知道"> 不知道 </label>
+	        <label class="radio-inline"> <input required type="radio" name="isCookOfthen"  value="否" >否 </label>
+	        <label class="radio-inline"> <input required type="radio" name="isCookOfthen"  value="是" > 是 </label>
+	        <label class="radio-inline"> <input required type="radio" name="isCookOfthen"  value="不知道"> 不知道 </label>
 	        </div>
 	        </div>
 	       </fieldset>
@@ -281,10 +281,11 @@ health = BeanUtil.getBeanNoNullString(request, SurveyHealth.class, health);
         <br>
         <div class="control-group">
           <div class="controls" style="margin-left: 200px">
-            <input   type="submit"  class="btn btn-success" 
+            <input    type="submit" name="submit" class="btn btn-success"
          value="&nbsp;保&nbsp;&nbsp;存&nbsp;">
          	&nbsp;&nbsp;
-         	<a class=""  href="survey_eat.jsp" role="button">下一页</a>
+			  <input    type="submit" name="submit"  class="btn btn-link"
+					   value="&nbsp;下一页&nbsp;">
           </div>
         </div>
   </form>
