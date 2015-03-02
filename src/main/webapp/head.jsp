@@ -42,12 +42,20 @@
 
 	}
 
+	.form-horizontal .control-label{
+		padding-top:0px;
+	}
+
+	.row{
+		padding-top:6px;
+	}
 	.radio-inline{
 		margin-right: 20px;
 	}
 	input:focus, input:hover, textarea:focus, textarea:hover {
 		 
-	 }
+	}
+	   
    </style>
    
   <script type="text/javascript">
