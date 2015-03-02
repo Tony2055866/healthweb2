@@ -81,6 +81,8 @@
 		 div.hide(100);
 	 }
  }
+
+
  
  function updatePage(obj){
 	 for(var pname in obj){
@@ -98,11 +100,15 @@
 					    	$(this).attr("checked","checked");
 					    }
 				    	//更新下面的radio
-				    	jQuery("input[name='"+pname+"0'][type='radio']").each(function() {
-				    		if(this.value == strArr[1]){
-						    	$(this).attr("checked","checked");
-						    }
-				    	});
+//				    	jQuery("input[name='"+pname+"0'][type='radio']").each(function() {
+//				    		if(this.value == strArr[1]){
+//						    	$(this).attr("checked","checked");
+//						    }
+//				    	});
+
+						//更新后面的 select
+
+
 						jQuery("input[name='"+pname+"0'][type='input']").each(function() {
 							$(this).attr("value",strArr[1]);
 						});
