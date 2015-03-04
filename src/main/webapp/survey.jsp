@@ -100,7 +100,7 @@ User user = (User)session.getAttribute("user") ;
 		        男
 		      </label>
 		      <label class="radio inline">
-		        <input type="radio" name="gender"  required value="女" >
+		        <input type="radio" name="gender" <%=check2%>  required value="女" >
 		        女
 		      </label>
 		  </div>
@@ -222,7 +222,7 @@ User user = (User)session.getAttribute("user") ;
          	&nbsp;&nbsp;
               <input   type="submit" name="submit"  class="btn btn-link"
                        value="&nbsp;下一页&nbsp;">
-         	<a class=""  href="survey_health.jsp" role="button" onclick="nextClick();">下一页</a>
+
           </div>
         </div>
     

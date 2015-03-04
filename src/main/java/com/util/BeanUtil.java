@@ -22,7 +22,7 @@ public class BeanUtil {
 		"hasXinLiShuaiJie","hasZhongFeng","hasTangNiaoBing","hasWeiYan","hasChangDao",
 		"hasZhiChuang","hasGanYan","hasGanYingHua","hasPinXue","hasShenShuaiJie","hasGuShuSong",
 		"hasTongFeng","hasFeiAi","hasWeiAi","hasGanAi","hasDaChangAi","hasOther",
-		"isJueJing", "isHasChild", "FuyongCiJS"};
+		"isJueJing", "isHasChild", "fuyongCiJs"};
 		
 	static Map<String,Boolean> map2 = new HashMap<String, Boolean>();
 	static{

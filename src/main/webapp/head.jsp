@@ -37,6 +37,10 @@
    	.input-group-addon{
    		width:250px;
    	}
+
+    .number{
+        width: 50px;
+    }
    	
    	label {
 

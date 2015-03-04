@@ -19,7 +19,6 @@
 		<property name="connection.driver_class">
 			com.mysql.jdbc.Driver
 		</property>
-		<property name="myeclipse.connection.profile">wp</property>
 		<mapping resource="com/dao/User.hbm.xml" />
 		<mapping resource="com/dao/SurveyHealth.hbm.xml" />
 		<mapping resource="com/dao/Formdata.hbm.xml" />
