@@ -342,12 +342,11 @@ String eatJson = new Gson().toJson(eat);
         </fieldset>
         <br>
         <div class="control-group">
-          <div class="controls" style="margin-left: 200px">
-            <input   type="submit"  class="btn btn-success" 
-         value="&nbsp;保&nbsp;&nbsp;存&nbsp;">
-         	&nbsp;&nbsp;
-         	<a class=""  href="survey_check.jsp" role="button">下一页</a>
-          </div>
+			<input   type="submit" name="submit" class="btn btn-success"
+					 value="&nbsp;保&nbsp;&nbsp;存&nbsp;">
+			&nbsp;&nbsp;
+			<input   type="submit" name="submit"  class="btn btn-link"
+					 value="&nbsp;下一页&nbsp;">
         </div>
   </form>
   

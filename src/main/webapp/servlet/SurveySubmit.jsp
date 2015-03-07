@@ -21,13 +21,19 @@
     return;
   }
 
-  if(type.equals("survey")){
+    String submit = request.getParameter("submit");
+    System.out.println("test submit value: " + submit);
+    if(type.equals("survey")){
     try {
       user = BeanUtil.getBean(request, User.class, user);
       UserDAO dao = new UserDAO();
       dao.update(user);
       logger.info("save user : " + user );
-      response.sendRedirect(request.getContextPath() + "/survey.jsp?result=success");
+        if(submit.contains("下一页")){
+            response.sendRedirect(request.getContextPath() + "/survey_health.jsp");
+        }else{
+            response.sendRedirect(request.getContextPath() + "/survey.jsp?result=success");
+        }
       return;
     } catch (Exception e) {
       e.printStackTrace();
@@ -43,7 +49,11 @@
       health.setUid(user.getId());
       dao.saveOrUpdate(health);
       logger.info("save health : " + health );
-      response.sendRedirect(request.getContextPath() + "/survey_health.jsp?result=success");
+        if(submit.contains("下一页")){
+            response.sendRedirect(request.getContextPath() + "/survey_eat.jsp");
+        }else{
+            response.sendRedirect(request.getContextPath() + "/survey_health.jsp?result=success");
+        }
       return;
     }catch (Exception e){
       response.sendRedirect(request.getContextPath() + "/survey_health.jsp?result=error");
@@ -55,7 +65,12 @@
       logger.info("SurveyEatDAO update eat: " +eat.toString());
       eat.setUid(user.getId());
       dao.saveOrUpdate(eat);
-      response.sendRedirect(request.getContextPath() + "/survey_eat.jsp?result=success");
+
+        if(submit.contains("下一页")){
+            response.sendRedirect(request.getContextPath() + "/survey_check.jsp");
+        }else{
+            response.sendRedirect(request.getContextPath() + "/survey_eat.jsp?result=success");
+        }
       return;
     }catch (Exception e){
       response.sendRedirect(request.getContextPath() + "/survey_eat.jsp?result=error");

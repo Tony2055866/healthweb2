@@ -204,7 +204,6 @@ $(function(){
 			  </div>
 			
 			</td>
-		
 		</tr>
 		<%} %>
 		</table>
@@ -212,12 +211,11 @@ $(function(){
       <br>
         <div class="control-group">
           <div class="controls" style="margin-left: 200px">
-            <input   type="submit"  class="btn btn-success" 
+            <input   type="submit" name="submit"  class="btn btn-success"
          value="&nbsp;保&nbsp;&nbsp;存&nbsp;">
          	&nbsp;&nbsp;
           </div>
         </div>
-      
   </form>
   
 </div>

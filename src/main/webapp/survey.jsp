@@ -23,6 +23,9 @@
     alert("操作失败！");
     <%}%>
 
+    function nextClick(){
+        document.getElementById("myform").submit();
+    }
 </script>
    <style type="text/css">
    	.titleDiv{
@@ -70,7 +73,7 @@ User user = (User)session.getAttribute("user") ;
 为保持信息的完整和准确，请不要用铅笔填写，尽量保持字迹清晰，不缺项漏项。谢谢您的合作！
 </p>
 
-<form class="form-horizontal" method="POST" action="servlet/SurveySubmit.jsp">
+<form class="form-horizontal" id="myform" method="POST" action="servlet/SurveySubmit.jsp">
     <fieldset>
       <div id="legend" class="">
         <legend >第一部分：一般信息
@@ -97,7 +100,7 @@ User user = (User)session.getAttribute("user") ;
 		        男
 		      </label>
 		      <label class="radio inline">
-		        <input type="radio" name="gender"  required value="女" >
+		        <input type="radio" name="gender" <%=check2%>  required value="女" >
 		        女
 		      </label>
 		  </div>
@@ -214,10 +217,12 @@ User user = (User)session.getAttribute("user") ;
     
     	<div class="control-group">
           <div class="controls">
-            <input   type="submit"  class="btn btn-success" 
+            <input   type="submit" name="submit"  class="btn btn-success"
          value="&nbsp;保&nbsp;&nbsp;存&nbsp;">
          	&nbsp;&nbsp;
-         	<a class=""  href="survey_health.jsp" role="button" onclick="return ">下一页</a>
+              <input   type="submit" name="submit"  class="btn btn-link"
+                       value="&nbsp;下一页&nbsp;">
+
           </div>
         </div>
     
