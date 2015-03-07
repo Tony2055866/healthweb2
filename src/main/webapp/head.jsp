@@ -38,9 +38,7 @@
    		width:250px;
    	}
    	
-   	label {
-
-	}
+   	
 
 	.form-horizontal .control-label{
 		padding-top:0px;
