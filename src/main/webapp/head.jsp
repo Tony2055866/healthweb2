@@ -143,10 +143,11 @@
 	 }
  }
 
-	<% if("success".equals( request.getParameter("result")) ){ %>
+	<% if("success".equals( request.getParameter("result")) ){   %>
 			alert("操作成功！");
+ 	
 	  <% }else if("error".equals( request.getParameter("result"))){ %>
- alert("操作失败！");
+ 			alert("操作失败！");
 	  <%}%>
  </script>
 

@@ -46,12 +46,12 @@ String names2[] =
         String labels3[] = {"慢性支气管炎","哮喘","肺气肿","肺结核",
 "慢性职业性肺病","肺心病","高血压病","冠心病或心肌梗死","心力衰竭","中风",
 "糖尿病","慢性胃炎或溃疡病","慢性肠道疾病","痔疮","慢性肝炎","肝硬化","贫血","慢性肾衰竭","骨质疏松症",
-"痛风","肺癌","胃癌","肝癌","大肠癌","其他"};
+"痛风","肺癌","胃癌","肝癌","大肠癌"};
 String names3[] = {"hasZhiQiGuan","hasXiaoChuan","hasFeiQiZhong",
 		"hasFeiJieHe","hasFeiBing","hasFeiXinBing","hasGaoXieYa","hasGuanXinBing",
 		"hasXinLiShuaiJie","hasZhongFeng","hasTangNiaoBing","hasWeiYan","hasChangDao",
 		"hasZhiChuang","hasGanYan","hasGanYingHua","hasPinXue","hasShenShuaiJie","hasGuShuSong",
-		"hasTongFeng","hasFeiAi","hasWeiAi","hasGanAi","hasDaChangAi","hasOther"};
+		"hasTongFeng","hasFeiAi","hasWeiAi","hasGanAi","hasDaChangAi"};
 
 User user = (User)session.getAttribute("user");
 SurveyHealthDAO dao = new SurveyHealthDAO();
@@ -93,7 +93,7 @@ health = BeanUtil.getBeanNoNullString(request, SurveyHealth.class, health);
 			  <div class="row">
 				  <label class="col-sm-3 control-label"><%=labels[i] %>:</label>
 				  <div class="col-sm-7">
-					  <select class="input required-xlarge" style="width: 100px;" name="<%=names[i] %>">
+					  <select class="input-xlarge" style="width: 100px;" name="<%=names[i] %>">
 						  <%
 							  Field f = health.getClass().getDeclaredField(names[i]);
 							  f.setAccessible(true);
@@ -113,7 +113,7 @@ health = BeanUtil.getBeanNoNullString(request, SurveyHealth.class, health);
 			<div class="row">
 				<label class="col-sm-3 control-label"><%=labels3[i] %>:</label>
 				<div class="col-sm-2">
-					<select class="input required-xlarge" style="width: 100px;" name="<%=names3[i] %>" onchange="selectChange(this,'<%=names3[i] %>',2)">
+					<select class="input-xlarge" style="width: 100px;" name="<%=names3[i] %>" onchange="selectChange(this,'<%=names3[i] %>',2)">
 						<%
                             
 							Field f = health.getClass().getDeclaredField(names3[i]);
@@ -147,14 +147,13 @@ health = BeanUtil.getBeanNoNullString(request, SurveyHealth.class, health);
        <%} %>
 		</fieldset>
 
-	   <fieldset>
-
-       <label class="col-sm-4 control-label">其他疾病（如有，请列出）</label>
+	   <div style="margin-top: 6px">
+       <label class="col-sm-4 control-lxabel">其他疾病（如有，请列出）</label>
         <div class="col-sm-8">
-            <input required type="text" class="form-control col-sm-4" name="hasOther" placeholder="其他疾病"/>
+            <input  type="text" value="" class="form-control col-sm-4" name="hasOther" placeholder="其他疾病"/>
         </div>
         <br>
-		</fieldset>
+		</div>
 
 
         <div class="titleDiv">您父母或兄弟姐妹患有或患过以下疾病吗?</div>

@@ -52,6 +52,9 @@
         <property name="birth" type="java.lang.String">
             <column name="birth" />
         </property>
+        <property name="finish" type="java.lang.String">
+            <column name="finish" />
+        </property>
         
     </class>
 </hibernate-mapping>

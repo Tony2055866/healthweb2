@@ -109,6 +109,10 @@
         <property name="tiyu04" type="java.lang.String">
             <column name="tiyu04" />
         </property>
+        <property name="tiyu05" type="java.lang.String">
+            <column name="tiyu05" />
+        </property>
+        
         <property name="zhiye01" type="java.lang.String">
             <column name="zhiye01" />
         </property>

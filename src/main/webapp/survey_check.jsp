@@ -5,7 +5,9 @@
 <%@ page import="com.google.gson.Gson" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<jsp:include page="head.jsp"></jsp:include>
+<jsp:include page="head.jsp">
+	<jsp:param value="survey - check form " name="title"/>
+</jsp:include>
 
 <body style="background-color:#f8f8f8">
 <%
@@ -34,7 +36,7 @@ $(function(){
    <h1 align="center">个人健康状况及生活方式问卷</h1>
    
    <form class="form-horizontal" id="submitBtn" method="POST" action="<%=request.getContextPath()%>/servlet/SurveySubmit.jsp">
-	   <input type="hidden" value="survey_check" name="type">
+	   <input required type="hidden" value="survey_check" name="type">
    <div id="legend" class="">
         <legend >第四部分：体检指标
         </legend>
@@ -47,7 +49,7 @@ $(function(){
 				<div class="form-group">
 				  <label class="col-md-5 control-label" >身高(cm)</label>  
 				  <div class="col-md-5">
-				  <input  name="high" type="text" placeholder="" class="form-control input-md">
+				  <input required  name="high" type="text" placeholder="" class="form-control input-md">
 				  </div>
 				</div>
 			</td>
@@ -55,7 +57,7 @@ $(function(){
 				<div class="form-group">
 				  <label class="col-md-5 control-label" >体重(kg)</label>  
 				  <div class="col-md-5">
-				  <input  name="weight" type="text" placeholder="" class="form-control input-md">
+				  <input required  name="weight" type="text" placeholder="" class="form-control input-md">
 				  </div>
 				</div>
 		    </td>
@@ -66,7 +68,7 @@ $(function(){
 				<div class="form-group">
 				  <label class="col-md-5 control-label" >收缩压(高压)mmHg</label>  
 				  <div class="col-md-5">
-				  <input  name="gaoya" type="text" placeholder="" class="form-control input-md">
+				  <input required  name="gaoya" type="text" placeholder="" class="form-control input-md">
 				  </div>
 				</div>
 			</td>
@@ -75,7 +77,7 @@ $(function(){
 				<div class="form-group">
 				  <label class="col-md-5 control-label" >舒张压(低压)mmHg</label>  
 				  <div class="col-md-5">
-				  <input  name="diya" type="text" placeholder="" class="form-control input-md">
+				  <input required  name="diya" type="text" placeholder="" class="form-control input-md">
 				  </div>
 				</div>
 			</td>
@@ -87,7 +89,7 @@ $(function(){
 				<div class="form-group">
 				  <label class="col-md-5 control-label" >腰围(cm)</label>  
 				  <div class="col-md-5">
-				  <input  name="xiongwei" type="text" placeholder="" class="form-control input-md">
+				  <input required  name="xiongwei" type="text" placeholder="" class="form-control input-md">
 				  </div>
 				</div>
 			</td>
@@ -103,16 +105,16 @@ $(function(){
 				<div class="row">       
 		        <label  class="col-sm-5 control-label">早博</label>
 		        <div class="col-sm-5">
-		        <label class="radio-inline"> <input type="radio" name="zaobo"  value="有" >有 </label>
-		        <label class="radio-inline"> <input type="radio" name="zaobo"  value="无"> 无 </label>
+		        <label class="radio-inline"> <input required type="radio" name="zaobo"  value="有" >有 </label>
+		        <label class="radio-inline"> <input required type="radio" name="zaobo"  value="无"> 无 </label>
 		        </div></div>
 			</td>
 			<td >
 				<div class="row">       
 		        <label  class="col-sm-5 control-label">ST- T改变</label>
 		        <div class="col-sm-5">
-		        <label class="radio-inline"> <input type="radio" name="stt"  value="有" >有 </label>
-		        <label class="radio-inline"> <input type="radio" name="stt"  value="无"> 无 </label>
+		        <label class="radio-inline"> <input required type="radio" name="stt"  value="有" >有 </label>
+		        <label class="radio-inline"> <input required type="radio" name="stt"  value="无"> 无 </label>
 		        </div></div>
 				
 		    </td>
@@ -123,8 +125,8 @@ $(function(){
 				<div class="form-group">
 				  <label class="col-md-5 control-label" >房颤</label>  
 				  <div class="col-md-5">
-			        <label class="radio-inline"> <input type="radio" name="fangchan"  value="有" >有 </label>
-			        <label class="radio-inline"> <input type="radio" name="fangchan"  value="无"> 无 </label>
+			        <label class="radio-inline"> <input required type="radio" name="fangchan"  value="有" >有 </label>
+			        <label class="radio-inline"> <input required type="radio" name="fangchan"  value="无"> 无 </label>
 			        </div>
 				</div>
 			</td>
@@ -132,8 +134,8 @@ $(function(){
 				<div class="form-group">
 				  <label class="col-md-5 control-label" >左心室肥大 </label>  
 				  <div class="col-md-5">
-			        <label class="radio-inline"> <input type="radio" name="zuoxinshi"  value="有" >有 </label>
-			        <label class="radio-inline"> <input type="radio" name="zuoxinshi"  value="无"> 无 </label>
+			        <label class="radio-inline"> <input required type="radio" name="zuoxinshi"  value="有" >有 </label>
+			        <label class="radio-inline"> <input required type="radio" name="zuoxinshi"  value="无"> 无 </label>
 			        </div>
 				</div>
 		    </td>
@@ -151,8 +153,8 @@ $(function(){
 				<div class="form-group">
 				  <label class="col-md-5 control-label" ><%=labels[i*2] %></label>  
 				  <div class="col-md-5">
-			        <label class="radio-inline"> <input type="radio" name="xb0<%=(i*2+1)%>"  value="有" >有 </label>
-			        <label class="radio-inline"> <input type="radio" name="xb0<%=(i*2+1)%>"  value="无"> 无 </label>
+			        <label class="radio-inline"> <input required type="radio" name="xb0<%=(i*2+1)%>"  value="有" >有 </label>
+			        <label class="radio-inline"> <input required type="radio" name="xb0<%=(i*2+1)%>"  value="无"> 无 </label>
 			        </div>
 				</div>
 			</td>
@@ -160,8 +162,8 @@ $(function(){
 				<div class="form-group">
 				  <label class="col-md-5 control-label" ><%=labels[i*2+1] %> </label>  
 				  <div class="col-md-5">
-			        <label class="radio-inline"> <input type="radio" name="xb0<%=(i*2+2)%>"  value="有" >有 </label>
-			        <label class="radio-inline"> <input type="radio" name="xb0<%=(i*2+2)%>"  value="无"> 无 </label>
+			        <label class="radio-inline"> <input required type="radio" name="xb0<%=(i*2+2)%>"  value="有" >有 </label>
+			        <label class="radio-inline"> <input required type="radio" name="xb0<%=(i*2+2)%>"  value="无"> 无 </label>
 			        </div>
 				</div>
 		    </td>
@@ -180,7 +182,7 @@ $(function(){
 				"低密度脂蛋白胆固醇LDL-C)", "前列腺特异抗原(PSA)","血肌酐(Cr)"} ;
 		
 		String units[]  ={"g/L","μmol/L",
-				      "IU/L"," ",
+				      "IU/L","",
 				      "IU/L"," ",
 				      "mmol/L"," ",
 					"mmol/L"," " ,
@@ -191,15 +193,24 @@ $(function(){
 					"μmol/L"} ;
 		
 		int maxValue[] = {};
+			
 			for( int i=0; i<labels2.length; i++){
+				String name = "";
+				if(i < 9)
+					name = "sys0" + (i+1);
+				else
+					name = "sys" + (i+1);
 		%>
+			
+			
+			
 		<tr width="100%">
 			<td width="50%" class="form-inline">
 			<div class="form-group">
 			    <div class="input-group">
 			      <div class="input-group-addon" style="width:220px;"><%=labels2[i] %></div>
-			      <input type="number" class="form-control" id="exampleInputAmount" name="sys0<%=(i+1)%>">
-			      <div class="input-group-addon">mmkg</div>
+			      <input required type="number" class="form-control" id="exampleInputAmount" name="<%=name%>">
+			      <div class="input-group-addon" style="width: 100px;"> <%=units[i]%> </div>
 			    </div>
 			  </div>
 			
@@ -211,7 +222,7 @@ $(function(){
       <br>
         <div class="control-group">
           <div class="controls" style="margin-left: 200px">
-            <input   type="submit" name="submit"  class="btn btn-success"
+            <input required   type="submit" name="submit"  class="btn btn-success"
          value="&nbsp;保&nbsp;&nbsp;存&nbsp;">
          	&nbsp;&nbsp;
           </div>

@@ -36,7 +36,7 @@ public class User implements java.io.Serializable {
 	private String password = "";
 	private String birth = "";
 	
-	
+	private String finish = "";
 	// Constructors
 
 	public String getBirth() {
@@ -46,7 +46,15 @@ public class User implements java.io.Serializable {
 	public void setBirth(String birth) {
 		this.birth = birth;
 	}
-
+	
+	public String getFinish() {
+		return finish;
+	}
+	
+	public void setFinish(String finish) {
+		this.finish = finish;
+	}
+	
 	/** default constructor */
 	public User() {
 	}

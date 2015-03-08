@@ -83,7 +83,12 @@
           logger.info("SurveyCheckDAO update check: " +check.toString());
           check.setUid(user.getId());
           dao.saveOrUpdate(check);
-          response.sendRedirect(request.getContextPath() + "/survey_check.jsp?result=success");
+          
+          user.setFinish("true");
+          UserDAO udao = new UserDAO();
+          udao.update(user);
+          session.setAttribute("user",user);
+          response.sendRedirect(request.getContextPath() + "/ucenter.jsp?result=finish1");
           return;
       }catch (Exception e){
           e.printStackTrace();

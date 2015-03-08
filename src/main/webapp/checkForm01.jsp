@@ -25,7 +25,7 @@ for(int i=1; i<=31; i++){
    --%>
    <h1 align="center">体检项目表</h1>
    
-   <form class="form-horizontal" id="submitBtn">
+   <form class="form-horizontal" id="submitBtn" action="servlet/CheckformSubmit.jsp">
    <div id="legend" class="">
         <legend >第一部分：体格检查
         </legend>
@@ -41,26 +41,29 @@ for(int i=1; i<=31; i++){
 		if(form2.getUnit().equals("无") || StringUtils.isNullOrEmpty(form2.getUnit())){
 			label2 = form2.getLabel();
 		}
+		String name1 = form.getName();
+		String name2 = form2.getName();
 	%>
 		<tr>
 			<td>
 				<div class="form-group">
-				  <label class="col-md-6 control-label" for="textinput"><%=label1 %></label>  
+				  <label class="col-md-6 control-label" ><%=label1 %></label>  
 				  <div class="col-md-6">
-				  <input id="textinput" name="textinput" type="text" placeholder="" class="form-control input-md">
+				  <input  name="<%=name1%>" type="text" placeholder="" class="form-control input-md">
 				  </div>
 				</div>
 			</td>
 			<td>
 				<div class="form-group">
-				  <label class="col-md-6 control-label" for="textinput"><%=label2 %></label>  
+				  <label class="col-md-6 control-label" ><%=label2 %></label>  
 				  <div class="col-md-6">
-				  <input id="textinput" name="textinput" type="text" placeholder="" class="form-control input-md">
+				  <input  name="<%=name2%>" type="text" placeholder="" class="form-control input-md">
 				  </div>
 				</div>
 		    </td>
 		</tr>
 	<%} %>
+		
 		</table>
       <div class="titleDiv">其他项目</div>
       <%for(int i=25; i<=31; i++){
@@ -68,13 +71,22 @@ for(int i=1; i<=31; i++){
     	  
       %>
       <div class="form-group">
-				  <label class="col-md-3 control-label" for="textinput"><%=form.getLabel() %>：</label>  
+				  <label class="col-md-3 control-label" ><%=form.getLabel() %>：</label>  
 				  <div class="col-md-8">
-				  <textarea id="textinput" name="textinput" type="text" placeholder="" class="form-control input-md"></textarea>
+				  <textarea name="textinput" type="text" placeholder="" class="form-control input-md"></textarea>
 				  </div>
 		</div>
 		<%} %>
-		
+
+	   <br>
+	   <div class="control-group">
+		   <div class="controls" style="margin-left: 200px">
+			   <input   type="submit"  class="btn btn-success"
+						value="&nbsp;保&nbsp;&nbsp;存&nbsp;">
+			   &nbsp;&nbsp;
+			   <a class=""  href="#" role="button">下一页</a>
+		   </div>
+	   </div>
   </form>
   
 </div>

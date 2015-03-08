@@ -44,13 +44,23 @@ public class SurveyEat implements java.io.Serializable {
 	private String tiyu02;
 	private String tiyu03;
 	private String tiyu04;
+	private String tiyu05;
+	
 	private String zhiye01;
 	private String zhiye02;
 	private String zhiye03;
 	private String zhiye04;
 	private String zhiye05;
 	private String zhiye06;
-
+	
+	public String getTiyu05() {
+		return tiyu05;
+	}
+	
+	public void setTiyu05(String tiyu05) {
+		this.tiyu05 = tiyu05;
+	}
+	
 	// Constructors
 
 	/** default constructor */
