@@ -5,7 +5,9 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.dao.FormdataDAO"%>
 <%@page import="com.mysql.jdbc.StringUtils"%>
-<jsp:include page="head.jsp"></jsp:include>
+<jsp:include page="head.jsp">
+	<jsp:param name="title" value="check form 01"></jsp:param>
+</jsp:include>
 
 <body style="background-color:#f8f8f8">
 

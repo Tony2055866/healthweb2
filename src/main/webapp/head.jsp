@@ -18,7 +18,7 @@
    		font-weight: bold;
    		line-height: 36px;
    		border-color:#EEEEEE;
-   		margin: 10px 0px 10px 0px;
+   		margin: 30px 0px 10px 0px;
    		padding-left: 20px;
    		border-radius:4px;
    	}
