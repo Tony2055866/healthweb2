@@ -23,18 +23,19 @@ for(int i=1; i<=31; i++){
 <div class="contentDiv">
 <%--<h1 align="center">个人健康状况及家族病史</h1>
    --%>
-   <h1 align="center">体检项目表</h1>
+   <h3 align="center">体检项目表</h3>
    
-   <form class="form-horizontal" id="submitBtn" action="servlet/CheckformSubmit.jsp">
+   <form class="form-horizontal" id="submitBtn" method="post" action="servlet/CheckformSubmit.jsp">
    <div id="legend" class="">
         <legend >第一部分：体格检查
         </legend>
     </div>
 		<div class="titleDiv">一般项目</div>
-	<table>
+	<table width="100%">
 	<%for(int i=1; i<=24; i+=2){ Formdata form = dao.findById(i);
 		Formdata form2 = dao.findById(i+1);
-		String label1 = form.getLabel()+ "(" +form.getUnit() + ")"; String label2 = form2.getLabel()+ "(" +form2.getUnit() + " )";
+		String label1 = form.getLabel()+ "(" +form.getUnit() + ")";
+		String label2 = form2.getLabel()+ "(" +form2.getUnit() + " )";
 		if(form.getUnit().equals("无") || StringUtils.isNullOrEmpty(form.getUnit())){
 			label1 = form.getLabel();
 		}
@@ -45,19 +46,19 @@ for(int i=1; i<=31; i++){
 		String name2 = form2.getName();
 	%>
 		<tr>
-			<td>
+			<td >
 				<div class="form-group">
-				  <label class="col-md-6 control-label" ><%=label1 %></label>  
-				  <div class="col-md-6">
-				  <input  name="<%=name1%>" type="text" placeholder="" class="form-control input-md">
+				  <label class="col-md-7 control-label" ><%=label1 %></label>
+				  <div class="col-md-3">
+				  <input  name="<%=name1%>" style="width: 100px;" type="text" placeholder="" class="form-control input-md">
 				  </div>
 				</div>
 			</td>
-			<td>
+			<td width="50%">
 				<div class="form-group">
-				  <label class="col-md-6 control-label" ><%=label2 %></label>  
-				  <div class="col-md-6">
-				  <input  name="<%=name2%>" type="text" placeholder="" class="form-control input-md">
+				  <label class="col-md-7 control-label" ><%=label2 %></label>
+				  <div class="col-md-3">
+				  <input  name="<%=name2%>" style="width: 100px;" type="text" placeholder="" class="form-control input-md">
 				  </div>
 				</div>
 		    </td>
@@ -84,7 +85,7 @@ for(int i=1; i<=31; i++){
 			   <input   type="submit"  class="btn btn-success"
 						value="&nbsp;保&nbsp;&nbsp;存&nbsp;">
 			   &nbsp;&nbsp;
-			   <a class=""  href="#" role="button">下一页</a>
+			   <a class="button-link"  href="checkForm02.jsp" role="button">下一页</a>
 		   </div>
 	   </div>
   </form>
