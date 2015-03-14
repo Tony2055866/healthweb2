@@ -30,7 +30,6 @@ Query query = HibernateSessionFactory.getSession().createQuery("from Formdata f 
 		</legend>
     </div>
 	   
-	   <
 		   <%
 			   for(Formdata form:forms){
 		   %>
@@ -38,7 +37,7 @@ Query query = HibernateSessionFactory.getSession().createQuery("from Formdata f 
 	   <div class="form-group">
 		   <label class="col-md-3 control-label" ><%=form.getLabel() %>：</label>
 		   <div class="col-md-8">
-			   <textarea name="textinput" type="text" placeholder="" class="form-control input-md"></textarea>
+			   <textarea name="textinput" type="text" placeholder="文本" class="form-control input-md"></textarea>
 		   </div>
 	   </div>
 	   

@@ -5,8 +5,10 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.dao.FormdataDAO"%>
 <%@page import="com.mysql.jdbc.StringUtils"%>
+
+<%request.setCharacterEncoding("UTF-8") ;  %>
 <jsp:include page="head.jsp">
-	<jsp:param name="title" value="check form 01"></jsp:param>
+	<jsp:param name="title" value="体检项目-01页"></jsp:param>
 </jsp:include>
 
 <body style="background-color:#f8f8f8">
