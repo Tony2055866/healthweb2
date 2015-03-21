@@ -1,0 +1,9 @@
+body{
+    text-align:center;
+    background-color:#f8f8f8;
+}
+
+.contentDiv{
+    width: 600px; text-align: center; margin: 100px auto;
+    background :#ffffff; border: 1px solid #ddd;
+}

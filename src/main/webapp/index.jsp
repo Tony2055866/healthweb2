@@ -54,11 +54,13 @@ function Check() // 验证表单数据有效性
 		<script type="text/javascript" src="boots/js/jquery.validate.min.js">
 </script>
 
+		<link rel="stylesheet" type="text/css" href="ucenter.css"/>
+		
+		
 	</head>
 	<body>
 
-		<div
-			style="width: 600px; text-align: center; margin: 100px auto; border: background :   #ffffff; border: 1px solid #ddd;">
+		<div class="contentDiv">
 			<form id="myForm" name="send" class="form-horizontal" role="form"
 				data-toggle="validator" action="loginResProcess.jsp" method="POST"
 				onsubmit="return Check();">

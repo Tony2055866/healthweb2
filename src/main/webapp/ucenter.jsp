@@ -24,6 +24,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	alert("恭喜完成问卷调查！");
 	<%}%>
 </script>
+
+	<link rel="stylesheet" type="text/css" href="ucenter.css"/>
 </head>
 <%
 User user = (User)session.getAttribute("user");
@@ -38,12 +40,11 @@ if(user == null){
 %>
 <body>
 
-	<div style="width: 600px; text-align: center;margin: 100px auto; border: background: #ffffff; border: 1px solid #ddd;">
-		<form class="form-horizontal" method="post" role="form"
-			data-toggle="validator" action="loginRegProcess.jsp">
-			<fieldset>
+	<div class="contentDiv">
+		<fieldset>
 				<!-- Form Name -->
-				<legend style="padding: 10px; ">个人中心:<%=user.getEmail()%></legend>
+				<legend style="padding: 10px; ">个人中心:  <%=user.getEmail()%>  </legend>
+		
 				<div class="col-md-8">
 					<a class="btn btn-link" href="survey.jsp" role="button"><%=f%></a> 
 				</div>
@@ -51,9 +52,11 @@ if(user == null){
 				<div class="col-md-8" style="margin-top: 10px;">
 					<a	class="btn btn-link" href="checkForm01.jsp" role="button">填写体检项目表</a>
 				</div>
-			</fieldset>
-	</form>
 
+			<div class="col-md-8" style="margin-top: 10px;">
+				<a	class="btn btn-link" href="logout.jsp" role="button">退出登录</a>
+			</div>
+		</fieldset>
 	</div>
 
 

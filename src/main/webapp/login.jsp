@@ -45,11 +45,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	 	if(msg != "")
 	 		alert(msg);
 	 </script>
+
+	  <link rel="stylesheet" type="text/css" href="ucenter.css"/>
   </head>
+  <body >
   
-  <body>
-  
-  <div style="width: 600px; text-align: center;margin: 100px auto; border: background: #ffffff; border: 1px solid #ddd;">
+  <div class="contentDiv">
   	<form class="form-horizontal" method="post" role="form"
 				data-toggle="validator" action="loginResProcess.jsp">
 <fieldset>

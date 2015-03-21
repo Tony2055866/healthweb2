@@ -223,7 +223,7 @@ $(function(){
         <div class="control-group">
           <div class="controls" style="margin-left: 200px">
             <input required   type="submit" name="submit"  class="btn btn-success"
-         value="&nbsp;保&nbsp;&nbsp;存&nbsp;">
+         value="&nbsp;提&nbsp;&nbsp;交&nbsp;">
          	&nbsp;&nbsp;
           </div>
         </div>
