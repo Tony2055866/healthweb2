@@ -26,11 +26,14 @@
 %>
 
 <style type="text/css">
-    .control-label{
+    .control-label1{
         width: 120px;
     }
     .control-label2{
         width: 150px;
+    }
+    .titleDiv{
+       margin-top: 0px;
     }
 
 </style>
@@ -48,13 +51,13 @@
         <table width="100%" style="text-align: left">
             <tr width="90%">
                 <td>
-                    <label class="control-label">姓名</label>
+                    <label class="control-label1">姓名</label>
                     <input type="text" name="nameZh" value="<%=user.getNameZh() %>" required placeholder="输入姓名"
                            class="input-xlarge">
                 </td>
 
                 <td>
-                    <label class="control-label">性别</label>
+                    <label class="control-label1">性别</label>
                     <!-- Multiple Radios -->
                     <%String check1 = user.getGender().equals("男") ? "checked=\"checked\"" : "";%>
                     <%String check2 = user.getGender().equals("女") ? "checked=\"checked\"" : "";%>
@@ -67,13 +70,13 @@
 
             <tr width="90%">
                 <td>
-                    <label class="control-label" for="company">工作单位</label>
+                    <label class="control-label1" for="company">工作单位</label>
 
                     <input type="text" name="company" value="<%=user.getCompany() %>" required class="input-xlarge">
 
                 </td>
                 <td>
-                    <label class="control-label">民族</label>
+                    <label class="control-label1">民族</label>
 
                     <select class="input-xlarge" name="nation">
                         <% out.println(PageUtil.getOptions(new String[]{"汉族", "壮族", "满族", "回族", "其他"}, user.getNation())); %>
@@ -83,13 +86,13 @@
 
             <tr width="90%">
                 <td>
-                    <label class="control-label">贯籍</label>
+                    <label class="control-label1">贯籍</label>
 
                     <input type="text" placeholder="贯籍" value="<%=user.getHome() %>" class="input-xlarge" name="home"
                            required>
                 </td>
                 <td>
-                    <label class="control-label">出生日期</label>
+                    <label class="control-label1">出生日期</label>
 
                     <input name="birth" type="text" value="<%=user.getBirth() %>" >
                 </td>
@@ -97,7 +100,7 @@
 
             <tr width="90%">
                 <td>
-                    <label class="control-label">职业</label>
+                    <label class="control-label1">职业</label>
 
                     <select class="input-xlarge" name="job">
                         <%
@@ -107,7 +110,7 @@
                     </select>
                 </td>
                 <td>
-                    <label class="control-label">文化程度</label>
+                    <label class="control-label1">文化程度</label>
 
                     <select class="input-xlarge" name="education">
                         <%out.println(PageUtil.getOptions(new String[]{"高中及以下", "大专", "本科", "硕士及以上"}, user.getEducation())); %>
@@ -117,14 +120,14 @@
 
             <tr width="90%">
                 <td>
-                    <label class="control-label">婚姻状况</label>
+                    <label class="control-label1">婚姻状况</label>
 
                     <select class="input-xlarge" name="marriage">
                         <%out.println(PageUtil.getOptions(new String[]{"未婚", "未婚", "离异", "丧偶", "其它"}, user.getMarriage())); %>
                     </select>
                 </td>
                 <td>
-                    <label class="control-label">通讯地址</label>
+                    <label class="control-label1">通讯地址</label>
 
                     <input type="text" placeholder="xx省xx市xx区xx路xx号" value="<%=user.getAddress() %>" name="address" required
                            class="input-xlarge">
@@ -133,13 +136,13 @@
 
             <tr width="90%">
                 <td>
-                    <label class="control-label">手机</label>
+                    <label class="control-label1">手机</label>
 
                     <input type="text" name="phone" placeholder="手机号" value="<%=user.getPhone() %>" class="input-xlarge"
                            required>
                 </td>
                 <td>
-                    <label class="control-label" for="input01">Email</label>
+                    <label class="control-label1" for="input01">Email</label>
 
                     <input type="text" value="<%=user.getEmail() %>" name="email" placeholder="" class="input-xlarge"
                            required>
@@ -193,11 +196,11 @@
             <legend >第二部分：个人健康状况及家族病史
             </legend>
         </div>
+        <div class="titleDiv">您最近半年来出现过下述症状吗?</div>
         <table width="100%">
 
             <%for(int i=0; i<labels.length; i+=2){
             %>
-
                 <tr width="90%">
                     <td>
                     <label class="col-sm-3 control-label2"><%=labels[i] %>:</label>
@@ -226,18 +229,48 @@
                 </tr>
             <%} %>
 
-            <tr width="90%">
-                <td>
-
-                </td>
-                <td>
-
-                </td>
-            </tr>
-
         </table>
 
+        <div class="titleDiv">您目前或曾经患过以下疾病吗?</div>
+        <table width="100%">
 
+            <%for(int i=0; i<labels3.length; i++){
+            %>
+           <tr>
+               <td>
+                <label class="col-sm-3 control-label2"><%=labels3[i] %>:</label>
+                    <select class="input-xlarge" style="width: 100px;" name="<%=names3[i] %>" onchange="selectChange(this,'<%=names3[i] %>',2)">
+                        <%
+
+                            Field f = health.getClass().getDeclaredField(names3[i]);
+                            f.setAccessible(true);
+                            String values[] = f.get(health).toString().trim().split(";");
+                            //System.out.println("health.getClass().getDeclaredField(names[i]) :" + f.get(health).toString() + "  " + names[i]);
+                            out.println(PageUtil.getOptions(new String[]{"从未患过", "曾经患过", "目前患有"},
+                                    values[0]));
+                            String showDiv = "none";
+                            if(values[0].equals("目前患有")){
+                                showDiv = "block";
+                            }
+                        %>
+                    </select>
+               </td>
+               <td>
+                <div id="<%=names3[i] %>Div" style="display:<%=showDiv%>;">
+                    <label class="col-sm-2 control-label2">您如何治疗的:</label>
+                        <select class="input required-xlarge" style="width: 160px;" name="<%=names3[i] %>0" >
+                            <%
+                                f.setAccessible(true);
+                                String val2 = values.length > 1 ? values[1]:"";
+                                out.println(PageUtil.getOptions(new String[]{"在医生指导下治疗", "自我治疗","未治疗"},
+                                        val2 )); %>
+                        </select>
+                </div>
+               </td>
+           </tr>
+            <%} %>
+
+        </table>
     </fieldset>
 
 </div>
