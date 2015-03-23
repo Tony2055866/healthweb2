@@ -12,6 +12,7 @@
    <script src="boots/js/jquery.min.js"></script>
    <script src="boots/js/bootstrap.min.js"></script>
 	<link href="topmenu.css" rel="stylesheet">
+	<style type="text/css">
    	.titleDiv{
    		background: #eff1f3;
    		font-size: 17px;
@@ -116,9 +117,6 @@
 //						    	$(this).attr("checked","checked");
 //						    }
 //				    	});
-
-						//更新后面的 select
-
 
 						jQuery("input[name='"+pname+"0'][type='input']").each(function() {
 							$(this).attr("value",strArr[1]);

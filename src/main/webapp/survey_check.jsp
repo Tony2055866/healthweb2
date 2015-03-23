@@ -224,7 +224,9 @@ $(function(){
           <div class="controls" style="margin-left: 200px">
             <input required   type="submit" name="submit"  class="btn btn-success"
          value="&nbsp;提&nbsp;&nbsp;交&nbsp;">
-         	&nbsp;&nbsp;
+			  &nbsp;&nbsp;
+			  <input required   type="submit" name="submit"  class="btn btn-link" href="survey_eat.jsp"
+					 value="&nbsp;上一页&nbsp;">
           </div>
         </div>
   </form>

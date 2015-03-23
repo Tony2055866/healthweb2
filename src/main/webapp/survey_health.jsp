@@ -245,6 +245,9 @@ health = BeanUtil.getBeanNoNullString(request, SurveyHealth.class, health);
          	&nbsp;&nbsp;
 			  <input    type="submit" name="submit"  class="btn btn-link"
 					   value="&nbsp;下一页&nbsp;">
+              &nbsp;&nbsp;
+              <input    type="submit" name="submit"  class="btn btn-link"  href="survey.jsp"
+                        value="&nbsp;上一页&nbsp;">
           </div>
         </div>
   </form>

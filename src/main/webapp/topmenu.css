@@ -1,0 +1,83 @@
+body{
+    margin: 0px;
+}
+.wrapper {
+    margin: 0 auto;
+    width:990px;
+    position:relative;
+    height:100%;
+}
+.header {
+    background:#8DC51C;
+    height:50px;
+    /*border-bottom:1px solid #9AAD9C;*/
+    width:100%;
+    min-width:990px;
+}
+.logo{
+    float:left;
+    width:162px;
+    height:50px;
+    background:url(img/logo.jpg) no-repeat;
+}
+.logo_lenove:active{
+    margin-top:13px;
+    opacity:.8;
+}
+.main-nav{
+    float: left;
+    height: 100%;
+    margin: 0 0 0 20px;
+    overflow: hidden;
+}
+.main-nav li {
+    float: left;
+    height: 100%;
+}
+.main-nav li a {
+    color: #ffffff;
+    display: block;
+    float: left;
+    margin: 0;
+    height: 100%;
+    font-weight:normal;
+    padding: 0 15px;
+    text-decoration:none;
+    font-size:18px;
+    line-height: 70px;
+}
+.main-nav li a:hover {
+    color:#507AD2;
+}
+.main-nav li.active a {
+    color:#507AD2;
+    background-color: #154C69;
+}
+.entry{
+    float:right;
+    height:50px;
+    width:300px;
+}
+.util-nav {
+    color: #dbdbdb;
+    float: right;
+    list-style:none;
+    margin:0;
+    margin-top:25px;
+}
+.util-nav li {
+    float: left;
+    line-height:21px;
+    overflow:hidden;
+    display:inline;
+    padding: 0 0 0 10px;
+}
+.util-nav a {
+    font-size:14px;
+    color: #dbdbdb;
+    text-decoration: none;
+    padding-top:3px \9;
+}
+.util-nav a:hover {
+    color: #FFF;
+}

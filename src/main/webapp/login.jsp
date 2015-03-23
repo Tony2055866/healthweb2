@@ -21,6 +21,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link href="boots/css/bootstrap.min.css" rel="stylesheet">
    <script src="boots/js/jquery.min.js"></script>
    <script src="boots/js/bootstrap.min.js"></script>
+	  <link href="topmenu.css" rel="stylesheet">
    <%
    if(session.getAttribute("user") != null){
 	   response.sendRedirect("ucenter.jsp");
@@ -49,7 +50,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  <link rel="stylesheet" type="text/css" href="ucenter.css"/>
   </head>
   <body >
-  
+  <jsp:include page="tophead.jsp"></jsp:include>
+
+
   <div class="contentDiv">
   	<form class="form-horizontal" method="post" role="form"
 				data-toggle="validator" action="loginResProcess.jsp">

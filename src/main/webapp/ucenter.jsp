@@ -15,7 +15,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <meta http-equiv="expires" content="0">
 <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 <meta http-equiv="description" content="This is my page">
-
+	<link href="topmenu.css" rel="stylesheet">
 <link href="boots/css/bootstrap.min.css" rel="stylesheet">
 <script src="boots/js/jquery.min.js"></script>
 <script src="boots/js/bootstrap.min.js"></script>
@@ -39,6 +39,8 @@ if(user == null){
 		f = "修改问卷调查(已完成)";
 %>
 <body>
+
+<jsp:include page="tophead.jsp"></jsp:include>
 
 	<div class="contentDiv">
 		<fieldset>
