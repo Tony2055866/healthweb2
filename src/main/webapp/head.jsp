@@ -9,8 +9,7 @@
 <link href="boots/css/bootstrap.min.css" rel="stylesheet">
    <script src="boots/js/jquery.min.js"></script>
    <script src="boots/js/bootstrap.min.js"></script>
-   
-   <style type="text/css">
+	<link href="topmenu.css" rel="stylesheet">
    	.titleDiv{
    		background: #eff1f3;
    		font-size: 17px;
