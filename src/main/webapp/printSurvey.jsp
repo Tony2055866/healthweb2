@@ -269,8 +269,16 @@
                </td>
            </tr>
             <%} %>
+            <tr>
+                <td colspan="2">
+                    <label >其他疾病（如有，请列出）</label>
+                    <input  type="text" value="<%=health.getHasOther()%>" style="width:300px" name="hasOther" placeholder="其他疾病"/>
+                </td>
 
+            </tr>
         </table>
+
+
     </fieldset>
 
 </div>

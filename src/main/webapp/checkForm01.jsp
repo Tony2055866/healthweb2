@@ -23,7 +23,7 @@ for(int i=1; i<=31; i++){
 }
 
 %>
-
+<jsp:include page="tophead.jsp"></jsp:include>
 <div class="contentDiv">
 <%--<h1 align="center">个人健康状况及家族病史</h1>
    --%>

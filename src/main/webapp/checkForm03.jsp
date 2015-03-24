@@ -44,6 +44,7 @@ Query query = HibernateSessionFactory.getSession().createQuery("from Formdata f 
 	System.out.println("divs.size() : " + divs.size());
 	
 %>
+<jsp:include page="tophead.jsp"></jsp:include>
 
 <div class="contentDiv">
 

@@ -9,6 +9,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <link href="topmenu.css" rel="stylesheet">
+
 	<link href="http://cdn.bootcss.com/twitter-bootstrap/2.0.4/css/bootstrap.min.css" rel="stylesheet">
 		<link href="http://cdn.bootcss.com/twitter-bootstrap/2.0.4/css/bootstrap-responsive.min.css" rel="stylesheet">
    <script src="http://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
@@ -64,6 +69,9 @@ if( session.getAttribute("user") == null ){
 User user = (User)session.getAttribute("user") ;
     user = BeanUtil.getBeanNoNullString(request, User.class, user);
 %>
+
+<jsp:include page="tophead.jsp"></jsp:include>
+
 <div class="contentDiv">
 <br><br>
 <h1 align="center">个人健康状况及生活方式问卷</h1>

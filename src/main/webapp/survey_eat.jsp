@@ -44,6 +44,9 @@ String eatJson = new Gson().toJson(eat);
 		 }
 	 }
  </script>
+
+<jsp:include page="tophead.jsp"></jsp:include>
+
 <div class="contentDiv">
 	<h1 align="center">个人健康状况及生活方式问卷</h1>
    <form class="form-horizontal" id="submitBtn" method="POST" action="<%=request.getContextPath()%>/servlet/SurveySubmit.jsp">
@@ -405,7 +408,7 @@ String eatJson = new Gson().toJson(eat);
 			<input required   type="submit" name="submit"  class="btn btn-link"
 					 value="&nbsp;下一页&nbsp;">
 			&nbsp;&nbsp;
-			<input required   type="submit" name="submit"  class="btn btn-link" href="survey_health.jsp"
+			<input      class="btn btn-link" href="survey_health.jsp"
 				   value="&nbsp;上一页&nbsp;">
         </div>
   </form>

@@ -31,6 +31,8 @@ $(function(){
 </script>
 
 <div class="contentDiv">
+	<jsp:include page="tophead.jsp"></jsp:include>
+
 <%--<h1 align="center">个人健康状况及家族病史</h1>
    --%>
    <h1 align="center">个人健康状况及生活方式问卷</h1>
@@ -225,7 +227,7 @@ $(function(){
             <input required   type="submit" name="submit"  class="btn btn-success"
          value="&nbsp;提&nbsp;&nbsp;交&nbsp;">
 			  &nbsp;&nbsp;
-			  <input required   type="submit" name="submit"  class="btn btn-link" href="survey_eat.jsp"
+			  <input   class="btn btn-link" href="survey_eat.jsp"
 					 value="&nbsp;上一页&nbsp;">
           </div>
         </div>

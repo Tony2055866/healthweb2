@@ -68,6 +68,9 @@ health = BeanUtil.getBeanNoNullString(request, SurveyHealth.class, health);
 	 updatePage(heal);
  });
  </script>
+
+<jsp:include page="tophead.jsp"></jsp:include>
+
 <div class="contentDiv">
 <%--<h1 align="center">个人健康状况及家族病史</h1>
    --%>
@@ -82,17 +85,11 @@ health = BeanUtil.getBeanNoNullString(request, SurveyHealth.class, health);
        <div class="titleDiv">您最近半年来出现过下述症状吗?</div>
        <fieldset>
 	      <div style="display: block">
-	      <%for(int i=0; i<labels.length; i++){
+	      <%for(int i=0; i<labels.length; i+=2){
 	       %>
-	       <%--<label class="col-sm-4 control-label"><%=labels[i] %>:</label>
-	    	<div class="col-sm-8">
-	        <label class="radio-inline"> <input required  type="radio" name="<%=names[i] %>"  value="没有" > 没有 </label>
-	        <label class="radio-inline"> <input required type="radio" name="<%=names[i] %>"  value="偶尔"> 偶尔 </label>
-	        <label class="radio-inline"> <input required type="radio" name="<%=names[i] %>"  value="经常"> 经常 </label>
-	        </div>--%>
 			  <div class="row">
 				  <label class="col-sm-3 control-label"><%=labels[i] %>:</label>
-				  <div class="col-sm-7">
+				  <div class="col-sm-2">
 					  <select class="input-xlarge" style="width: 100px;" name="<%=names[i] %>">
 						  <%
 							  Field f = health.getClass().getDeclaredField(names[i]);
@@ -102,6 +99,19 @@ health = BeanUtil.getBeanNoNullString(request, SurveyHealth.class, health);
 									  "经常"}, f.get(health).toString() )); %>
 					  </select>
 				  </div>
+
+                  <%if( i+1 < labels.length){%>
+                    <label class="col-sm-3 control-label"><%=labels[i+1] %>:</label>
+                     <div class="col-sm-2">
+                      <select class="input-xlarge" style="width: 100px;" name="<%=names[i+1] %>">
+                          <%
+                               f = health.getClass().getDeclaredField(names[i+1]);
+                              f.setAccessible(true);
+                              out.println(PageUtil.getOptions(new String[]{"没有", "偶尔",
+                                      "经常"}, f.get(health).toString() )); %>
+                      </select>
+                    </div>
+                  <%}%>
 			  </div>
 	       <%} %>
 	    </div>
@@ -155,14 +165,13 @@ health = BeanUtil.getBeanNoNullString(request, SurveyHealth.class, health);
         <br>
 		</div>
 
-
         <div class="titleDiv">您父母或兄弟姐妹患有或患过以下疾病吗?</div>
         <fieldset>
          <%for(int i=0; i<labels2.length; i++){
        %>
 			<div class="row">
 				<label class="col-sm-3 control-label"><%=labels2[i] %>:</label>
-				<div class="col-sm-7">
+				<div class="col-sm-2">
 					<select class="input required-xlarge" style="width: 100px;" name="<%=names2[i] %>">
 						<%
 							Field f = health.getClass().getDeclaredField(names[i]);
@@ -171,6 +180,19 @@ health = BeanUtil.getBeanNoNullString(request, SurveyHealth.class, health);
 									"不知道"}, f.get(health).toString() )); %>
 					</select>
 				</div>
+
+                <%if(i+1 < labels2.length){%>
+                <label class="col-sm-3 control-label"><%=labels2[i+1] %>:</label>
+                <div class="col-sm-2">
+                    <select class="input required-xlarge" style="width: 100px;" name="<%=names2[i+1] %>">
+                        <%
+                             f = health.getClass().getDeclaredField(names[i+1]);
+                            f.setAccessible(true);
+                            out.println(PageUtil.getOptions(new String[]{"否", "是",
+                                    "不知道"}, f.get(health).toString() )); %>
+                    </select>
+                </div>
+                <%}%>
 			</div>
    
        <%} %>
@@ -246,7 +268,7 @@ health = BeanUtil.getBeanNoNullString(request, SurveyHealth.class, health);
 			  <input    type="submit" name="submit"  class="btn btn-link"
 					   value="&nbsp;下一页&nbsp;">
               &nbsp;&nbsp;
-              <input    type="submit" name="submit"  class="btn btn-link"  href="survey.jsp"
+              <input     class="btn btn-link"  href="survey.jsp"
                         value="&nbsp;上一页&nbsp;">
           </div>
         </div>

@@ -19,6 +19,7 @@
 Query query = HibernateSessionFactory.getSession().createQuery("from Formdata f where f.id > 212 and f.id < 238");
 	List<Formdata> forms = query.list();
 %>
+<jsp:include page="tophead.jsp"></jsp:include>
 
 <div class="contentDiv">
 

@@ -48,7 +48,10 @@ if(user == null){
 				<legend style="padding: 10px; ">个人中心:  <%=user.getEmail()%>  </legend>
 		
 				<div class="col-md-8">
-					<a class="btn btn-link" href="survey.jsp" role="button"><%=f%></a> 
+					<a class="btn btn-link" href="survey.jsp" role="button"><%=f%></a>
+					<% if(user.getFinish().equals("true")){ %>
+					<a class="btn btn-success" href="printSurvey.jsp" role="button">打印</a>
+					<%}%>
 				</div>
 				
 				<div class="col-md-8" style="margin-top: 10px;">

@@ -9,9 +9,10 @@
 <link href="boots/css/bootstrap.min.css" rel="stylesheet">
 	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 	<script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-   <script src="boots/js/jquery.min.js"></script>
-   <script src="boots/js/bootstrap.min.js"></script>
 	<link href="topmenu.css" rel="stylesheet">
+
+	<script src="boots/js/jquery.min.js"></script>
+   <script src="boots/js/bootstrap.min.js"></script>
 	<style type="text/css">
    	.titleDiv{
    		background: #eff1f3;
