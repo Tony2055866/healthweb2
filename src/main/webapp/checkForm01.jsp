@@ -89,7 +89,8 @@ for(int i=1; i<=31; i++){
 			   <input   type="submit"  class="btn btn-success"
 						value="&nbsp;保&nbsp;&nbsp;存&nbsp;">
 			   &nbsp;&nbsp;
-			   <a class="button-link"  href="checkForm02.jsp" role="button">下一页</a>
+               <input   type="submit" name="submit"  class="btn btn-link"
+                        value="&nbsp;下一页&nbsp;">
 		   </div>
 	   </div>
   </form>

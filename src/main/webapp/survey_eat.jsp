@@ -33,14 +33,23 @@ String eatJson = new Gson().toJson(eat);
 		if(arguments.length > 0){
 			var showDiv = window.document.getElementById(arguments[0]);
 			$(showDiv).show();
+            $("#"+arguments[0] + " :input").each(function () {      //注意input前面有个空格
+                $(this).attr("required","");
+            })
 		}
 		 if(arguments.length > 1){
 			 var div = window.document.getElementById(arguments[1]);
 			 $(div).hide();
+             $("#"+arguments[1] + " :input").each(function () {      //注意input前面有个空格
+                 $(this).removeAttr("required","");
+             })
 		 }
 		 if(arguments.length > 2){
 			 var div = window.document.getElementById(arguments[2]);
 			 $(div).hide();
+             $("#"+arguments[2] + " :input").each(function () {      //注意input前面有个空格
+                 $(this).removeAttr("required","");
+             })
 		 }
 	 }
  </script>
@@ -130,20 +139,35 @@ String eatJson = new Gson().toJson(eat);
         </fieldset>
 	   <%
 		   String div1 = "none",div2="none",div3="none";
-		   if(eat.getIsXiyan().equals("是"))
-			   div1 = "block";
-		   else if(eat.getIsXiyan().equals("否"))
-			   div2 = "block";
-		   else if(eat.getIsXiyan().equals("已戒"))
-			   div3 = "block";
+		   String isRequire1 = "",isRequire2 = "",isRequire3 = "";
+           if(eat.getIsXiyan().equals("是")) {
+               div1 = "block";
+               isRequire1 = "required";
+           }
+		   else if(eat.getIsXiyan().equals("否")){
+               div2 = "block";
+               isRequire2 = "required";
+           }
+			   
+		   else if(eat.getIsXiyan().equals("已戒")){
+               div3 = "block";
+               isRequire2 = "required";
+           }
+			   
 	   %>
         <div id="isXiyanDiv" style="display: <%=div1%>">
         	<div class="row">
 	        <label  class="col-sm-4 control-label">您主要抽哪种类型的烟?</label>
 	        <div class="col-sm-6">
-		        <label class="radio-inline"> <input required type="radio" name="zhuyaoChou"  value="卷烟" >卷烟</label>
+                <select class="input-xlarge" style="width: 100px;" name="zhuyaoChou">
+                    <%
+                        out.println(PageUtil.getOptions(new String[]{"卷烟", "雪茄",
+                                "烟丝"}, eat.getZhuyaoChou())); %>
+                    %>
+                </select>
+		        <%--<label class="radio-inline"> <input required type="radio" name="zhuyaoChou"  value="卷烟" >卷烟</label>
 		        <label class="radio-inline"> <input required type="radio" name="zhuyaoChou"  value="雪茄" >雪茄</label>
-		        <label class="radio-inline"> <input required type="radio" name="zhuyaoChou"  value="烟丝">烟丝</label>
+		        <label class="radio-inline"> <input required type="radio" name="zhuyaoChou"  value="烟丝">烟丝</label>--%>
 	        </div>
 	        </div>
 	        <div class="row">
@@ -164,8 +188,13 @@ String eatJson = new Gson().toJson(eat);
         	<div class="row">
 	        <label  class="col-sm-4 control-label">您工作场所或居住场所有人吸烟吗?</label>
 	        <div class="col-sm-6">
-		        <label class="radio-inline"> <input required type="radio" name="hasOtherChou"  value="有" >有</label>
-		        <label class="radio-inline"> <input required type="radio" name="hasOtherChou"  value="没有" >没有</label>
+                <select class="input-xlarge" style="width: 100px;" name="hasOtherChou">
+                    <%
+                        out.println(PageUtil.getOptions(new String[]{"有", "没有"}, eat.getHasOtherChou())); %>
+                    %>
+                </select>
+		        <%--<label class="radio-inline"> <input required type="radio" name="hasOtherChou"  value="有" >有</label>
+		        <label class="radio-inline"> <input required type="radio" name="hasOtherChou"  value="没有" >没有</label>--%>
 	        </div>
 	        </div>
         </div>
@@ -195,8 +224,11 @@ String eatJson = new Gson().toJson(eat);
         	<div class="row">
 		        <label  class="col-sm-4 control-label">您工作场所或居住场所所有人吸烟吗?</label>
 		        <div class="col-sm-6">
-			        <label class="radio-inline"> <input required type="radio" name="hasOtherChou"  value="有" >没有</label>
-			        <label class="radio-inline"> <input required type="radio" name="hasOtherChou"  value="有" >没有</label>
+                    <select class="input-xlarge" style="width: 100px;" name="hasOtherChou">
+                        <%
+                            out.println(PageUtil.getOptions(new String[]{"有", "没有"}, eat.getHasOtherChou())); %>
+                        %>
+                    </select>
 		        </div>
 	        </div>
         </div>
@@ -209,14 +241,15 @@ String eatJson = new Gson().toJson(eat);
 					<select class="input-xlarge" style="width: 150px;height: 2em;" name="isdrink" onchange="selectChange(this,'isdrink',0)">
 					<%
 						String drinkShow = "none";
-						if( "喝酒".equals(eat.getIsdrink()) )
+                        String isRequired = "";
+						if( "喝酒".equals(eat.getIsdrink()) ){
 							drinkShow = "block";
+                            isRequired = "required";
+                        }
 						out.println(PageUtil.getOptions( new String[]{"喝酒","不喝","以前喝、现在不喝"} , eat.getIsdrink() ));
 					%>
 					</select>	
-			        <%--<label class="radio-inline"> <input required type="radio" name="isdrink"  value="不喝" >不喝</label>
-			        <label class="radio-inline"> <input required type="radio" name="isdrink"  value="以前喝、现在不喝" >以前喝、现在不喝</label>
-			        <label class="radio-inline"> <input required type="radio" name="isdrink"  value="喝酒" >喝酒</label>--%>
+			        
 		        </div>
 	        </div>
 	        
@@ -234,7 +267,7 @@ String eatJson = new Gson().toJson(eat);
 					<label  class="col-sm-5 control-label">您通常每次饮多少酒? (只填写您常喝的酒)</label>
 					<div class="col-sm-7">
 						<div class="col-sm-3">
-							<input required id="name" name="howmuchDrink1" type="number" min="1" placeholder="" class="form-control input-md" >
+							<input <%=isRequired%> id="name" name="howmuchDrink1" type="number" min="1" placeholder="" class="form-control input-md" >
 						</div>
 						<label  class="col-sm-4 " style="font-weight: 500; height: 2em">两白酒</label>
 					</div>
@@ -244,7 +277,7 @@ String eatJson = new Gson().toJson(eat);
 					<label  class="col-sm-5 control-label">&nbsp;&nbsp;&nbsp;</label>
 					<div class="col-sm-7">
 						<div class="col-sm-3">
-							<input required id="name" name="howmuchDrink2" type="number" min="1" placeholder="" class="form-control input-md" >
+							<input <%=isRequired%> id="name" name="howmuchDrink2" type="number" min="1" placeholder="" class="form-control input-md" >
 						</div>
 						<label  class="col-sm-4 " style="font-weight: 500; height: 2em">两葡萄酒/黄酒</label>
 					</div>
@@ -254,7 +287,7 @@ String eatJson = new Gson().toJson(eat);
 					<label  class="col-sm-5 control-label">&nbsp;&nbsp;&nbsp;</label>
 					<div class="col-sm-7">
 						<div class="col-sm-3">
-							<input required id="name" name="howmuchDrink3" type="number" min="1" placeholder="" class="form-control input-md" >
+							<input <%=isRequired%> id="name" name="howmuchDrink3" type="number" min="1" placeholder="" class="form-control input-md" >
 						</div>
 						<label  class="col-sm-4 " style="font-weight: 500; height: 2em">瓶啤酒</label>
 					</div>
@@ -408,8 +441,7 @@ String eatJson = new Gson().toJson(eat);
 			<input required   type="submit" name="submit"  class="btn btn-link"
 					 value="&nbsp;下一页&nbsp;">
 			&nbsp;&nbsp;
-			<input      class="btn btn-link" href="survey_health.jsp"
-				   value="&nbsp;上一页&nbsp;">
+            <a   class="btn btn-link" href="survey_health.jsp" >&nbsp;上一页&nbsp;</a>
         </div>
   </form>
   

@@ -227,7 +227,7 @@ health = BeanUtil.getBeanNoNullString(request, SurveyHealth.class, health);
                 <div class="row">
                     <label  class="col-sm-4 control-label"><%=labelsWoman[i]%></label>
                     <div class="col-sm-2">
-                        <select class="input required-xlarge" style="width: 100px; height: 2.2em; " name="<%=namesWoman[i]%>">
+                        <select class="input required-xlarge" style="width: 100px; height: 2.2em; " name="<%=namesWoman[i]%>" onchange="selectChange(this,'<%=namesWoman[i] %>',1)">
                             <%
                                 String isJueJingShow = "none";
                                 String values[] = null;
@@ -249,9 +249,9 @@ health = BeanUtil.getBeanNoNullString(request, SurveyHealth.class, health);
                         </select>
                     </div>
                     <% if(sublabelsWoman.length > i && sublabelsWoman[i] != null){ %>
-                        <div class="form-group " id="isJueJingDiv" style="display: <%=isJueJingShow%>">
+                        <div class="form-group " id="<%=namesWoman[i]%>Div" style="display: <%=isJueJingShow%>">
                         <label  class="col-sm-2 control-label"><%=sublabelsWoman[i]%></label>
-                        <div class="col-sm-2"><input required type="number" class="form-control"  name="<%=namesWoman[i]%>0" value="<%=val2%>" /></div>
+                        <div class="col-sm-2"><input  type="number" class="form-control"  name="<%=namesWoman[i]%>0" value="<%=val2%>" /></div>
                        </div>
                     <%} %>
                </div>
@@ -269,8 +269,7 @@ health = BeanUtil.getBeanNoNullString(request, SurveyHealth.class, health);
 			  <input    type="submit" name="submit"  class="btn btn-link"
 					   value="&nbsp;下一页&nbsp;">
               &nbsp;&nbsp;
-              <input     class="btn btn-link"  href="survey.jsp"
-                        value="&nbsp;上一页&nbsp;">
+              <a   class="btn btn-link" href="survey.jsp" >&nbsp;上一页&nbsp;</a>
           </div>
         </div>
   </form>

@@ -76,8 +76,12 @@ body{
     font-size:14px;
     color: #dbdbdb;
     text-decoration: none;
-    padding-top:3px \9;
+    padding-top:3px ;
 }
 .util-nav a:hover {
     color: #FFF;
+}
+
+li{
+    list-style-type: none;
 }

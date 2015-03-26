@@ -7,8 +7,8 @@
 <%String title = request.getParameter("title"); %>
 <title><%=title %></title>
 <link href="boots/css/bootstrap.min.css" rel="stylesheet">
-	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-	<script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+	<script src="boots/html5shiv.js"></script>
+	<script src="boots/respond.min.js"></script>
 	<link href="topmenu.css" rel="stylesheet">
 
 	<script src="boots/js/jquery.min.js"></script>
@@ -17,7 +17,6 @@
    	.titleDiv{
    		background: #eff1f3;
    		font-size: 17px;
-   		font-style:solid;
    		font-weight: bold;
    		line-height: 36px;
    		border-color:#EEEEEE;
@@ -90,7 +89,13 @@
 	 var div = $("#"+name+"Div");
 	 if(changeIndex == ele.selectedIndex){
 		 div.show(100);
+         $("#"+name+"Div" + " :input").each(function () {      //注意input前面有个空格
+             $(this).attr("required","");
+         })
 	 }else{
+         $("#"+name+"Div" + " :input").each(function () {      //注意input前面有个空格
+             $(this).removeAttr("required","");
+         })
 		 div.hide(100);
 	 }
  }
