@@ -60,7 +60,7 @@ Query query = HibernateSessionFactory.getSession().createQuery("from Formdata f 
 	   <div class="row">
 		   <label class="col-sm-3 control-label">血型ABO正反定型:</label>
 		   <div class="col-sm-7">
-			   <select class="input required-xlarge" style="width: 160px; height:2em;" name="labn46" >
+			   <select class="input required-xlarge" style="width: 160px; height:2em;" name="labxone0" >
 				   <%
 					   out.println(PageUtil.getOptions(new String[]{"O型", "A型", "B型", "AB型"},
 							   "")); %>

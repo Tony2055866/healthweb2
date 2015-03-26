@@ -37,6 +37,11 @@
 		<mapping resource="com/dao/Formdata.hbm.xml" />
 		<mapping resource="com/dao/SurveyCheck.hbm.xml" />
 		<mapping resource="com/dao/SurveyEat.hbm.xml" />
+        <mapping resource="com/dao/Check04.hbm.xml" />
+        <mapping resource="com/dao/Check01.hbm.xml" />
+        <mapping resource="com/dao/Check03.hbm.xml" />
+        <mapping resource="com/dao/Check02.hbm.xml" />
+        
 	</session-factory>
 
 </hibernate-configuration>
