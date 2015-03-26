@@ -167,15 +167,16 @@ health = BeanUtil.getBeanNoNullString(request, SurveyHealth.class, health);
 
         <div class="titleDiv">您父母或兄弟姐妹患有或患过以下疾病吗?</div>
         <fieldset>
-         <%for(int i=0; i<labels2.length; i++){
+         <%for(int i=0; i<labels2.length; i+=2){
        %>
 			<div class="row">
 				<label class="col-sm-3 control-label"><%=labels2[i] %>:</label>
 				<div class="col-sm-2">
 					<select class="input required-xlarge" style="width: 100px;" name="<%=names2[i] %>">
 						<%
-							Field f = health.getClass().getDeclaredField(names[i]);
+							Field f = health.getClass().getDeclaredField(names2[i]);
 							f.setAccessible(true);
+                            //logger.info("get options:" + f.get(health).toString() + "   names[i]:" +names[i] );
 							out.println(PageUtil.getOptions(new String[]{"否", "是",
 									"不知道"}, f.get(health).toString() )); %>
 					</select>
@@ -186,7 +187,7 @@ health = BeanUtil.getBeanNoNullString(request, SurveyHealth.class, health);
                 <div class="col-sm-2">
                     <select class="input required-xlarge" style="width: 100px;" name="<%=names2[i+1] %>">
                         <%
-                             f = health.getClass().getDeclaredField(names[i+1]);
+                             f = health.getClass().getDeclaredField(names2[i+1]);
                             f.setAccessible(true);
                             out.println(PageUtil.getOptions(new String[]{"否", "是",
                                     "不知道"}, f.get(health).toString() )); %>

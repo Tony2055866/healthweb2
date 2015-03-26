@@ -32,6 +32,12 @@
     .control-label2{
         width: 150px;
     }
+    .control-label3{
+        width: 200px;
+    }
+    .smallInput{
+        width: 80px;
+    }
     .titleDiv{
        margin-top: 0px;
     }
@@ -277,7 +283,20 @@
 
             </tr>
         </table>
+        <div class="titleDiv">如果您是女性，请回答以下问题?</div>
+        <table width="100%">
+            <tr>
+                <td >
+                    <label  class="col-sm-4 control-label2">您第一次来月经的年龄是(岁)：</label>
+                       <input  type="number" value="<%=health.getFirstYj()%>"  name="firstYj" />
+                </td>
+                <td >
+                    <label  class="col-sm-4 control-label2">如果已婚，您结婚年龄是：</label>
+                    <input required type="number" value="<%=health.getAgeOfM()%>"  name="ageOfM" />
+                </td>
+            </tr>
 
+        </table>
 
     </fieldset>
 
