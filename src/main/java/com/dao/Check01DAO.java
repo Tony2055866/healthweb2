@@ -55,6 +55,7 @@ public class Check01DAO extends BaseHibernateDAO {
 	public static final String NORMAL31 = "normal31";
 
 	public void save(Check01 transientInstance) {
+       
 		log.debug("saving Check01 instance");
 		try {
 			getSession().save(transientInstance);

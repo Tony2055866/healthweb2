@@ -408,8 +408,7 @@ String eatJson = new Gson().toJson(eat);
 			<input required   type="submit" name="submit"  class="btn btn-link"
 					 value="&nbsp;下一页&nbsp;">
 			&nbsp;&nbsp;
-			<input      class="btn btn-link" href="survey_health.jsp"
-				   value="&nbsp;上一页&nbsp;">
+            <a   class="btn btn-link" href="survey_health.jsp" >&nbsp;上一页&nbsp;</a>
         </div>
   </form>
   

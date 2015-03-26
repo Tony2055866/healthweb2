@@ -15,7 +15,6 @@ import org.slf4j.LoggerFactory;
  * methods provides additional information for how to configure it for the
  * desired type of transaction control.
  * 
- * @see dao.Check03
  * @author MyEclipse Persistence Tools
  */
 
@@ -159,6 +158,7 @@ public class Check03DAO extends BaseHibernateDAO {
 	public static final String LABXONE134 = "labxone134";
 
 	public void save(Check03 transientInstance) {
+        
 		log.debug("saving Check03 instance");
 		try {
 			getSession().save(transientInstance);

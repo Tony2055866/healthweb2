@@ -1,4 +1,4 @@
-
+package com.dao;
 /**
  * Check03 entity. @author MyEclipse Persistence Tools
  */

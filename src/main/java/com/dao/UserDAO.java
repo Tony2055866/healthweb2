@@ -52,6 +52,7 @@ public class UserDAO extends BaseHibernateDAO {
 	public void update(User transientInstance) {
 		log.debug("saveOrUpdate User instance");
 		//Transaction tran = getSession().beginTransaction();
+        getSession().clear();
 		try {
 			getSession().saveOrUpdate(transientInstance);
 			//tran.commit();
