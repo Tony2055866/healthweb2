@@ -3,6 +3,8 @@
 <%@ page import="com.dao.User" %>
 <%@ page import="com.util.BeanUtil" %>
 <%@ page import="com.dao.UserDAO" %>
+<%@ page import="com.dao.Check01" %>
+<%@ page import="com.dao.Check01DAO" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     Logger logger = LoggerFactory.getLogger("SurveySubmit.jsp");
@@ -19,12 +21,12 @@
     }
     
     String submit = request.getParameter("submit");
-    if(type.equals("survey")){
+    if(type.equals("check01")){
         try {
-            user = BeanUtil.getBean(request, User.class, user);
-            UserDAO dao = new UserDAO();
-            dao.update(user);
-            logger.info("save user : " + user );
+            Check01 check01 = BeanUtil.getBeanNoNullStringFromRequest(request, Check01.class, null);
+            Check01DAO dao = new Check01DAO();
+            check01.setUid(user.getId());
+            dao.saveOrUpdate(check01);
             if(submit.contains("下一页")){
                 response.sendRedirect(request.getContextPath() + "/survey_health.jsp");
             }else{
