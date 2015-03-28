@@ -88,10 +88,6 @@ String eatJson = new Gson().toJson(eat);
 						"1-2天","小于1天"}, f.get(eat).toString())); %>
 			%>
 			</select>
-        <%--<label class="radio-inline"> <input required type="radio" name="<%=nameseat[i] %>"  value="5-7天" >5-7天 </label>
-        <label class="radio-inline"> <input required type="radio" name="<%=nameseat[i] %>"  value="3-4天" >3-4天 </label>
-        <label class="radio-inline"> <input required type="radio" name="<%=nameseat[i] %>"  value="1-2天">1-2天 </label>
-        <label class="radio-inline"> <input required type="radio" name="<%=nameseat[i] %>"  value="小于1天">小于1天 </label>--%>
         </div>
         </div>
         <%} %>
@@ -110,10 +106,6 @@ String eatJson = new Gson().toJson(eat);
 						out.println(PageUtil.getOptions( options[i-10] , f.get(eat).toString() ));
 					%>
 				</select>
-	        <%--<label class="radio-inline"> <input required type="radio" name="<%=nameseat[i] %>"  value="<%=options[i-10][0] %>" ><%=options[i-10][0] %> </label>
-	        <label class="radio-inline"> <input required type="radio" name="<%=nameseat[i] %>"  value="<%=options[i-10][1] %>" ><%=options[i-10][1] %> </label>
-	        <label class="radio-inline"> <input required type="radio" name="<%=nameseat[i] %>"  value="<%=options[i-10][2] %>"><%=options[i-10][2] %> </label>
-	        <label class="radio-inline"> <input required type="radio" name="<%=nameseat[i] %>"  value="<%=options[i-10][3] %>"><%=options[i-10][3] %> </label>--%>
 	        </div>
 	        </div>
         <%} %>
@@ -298,7 +290,7 @@ String eatJson = new Gson().toJson(eat);
 		        <div class="row">
 			        <label  class="col-sm-5 control-label">如果一天不喝酒，您会感到不舒服吗?</label>
 			        <div class="col-sm-7">
-						<select class="input-xlarge" style="width: 150px; height: 2em" name="work" >
+						<select class="input-xlarge" style="width: 150px; height: 2em" name="ismustDrink" >
 							<% out.println(PageUtil.getOptions(new String[]{"会", "不会"}, eat.getIsmustDrink() )); %>
 						</select>
 				       <%-- <label class="radio-inline"> <input required type="radio" name="ismustDrink"  value="会" >会</label>
@@ -342,7 +334,7 @@ String eatJson = new Gson().toJson(eat);
 			<div id="jiaotongDiv" style="display: <%=timeShow%>">
 				<label  class="col-sm-4 control-label">每次上班大概要多长时间?</label>
 				<div class="col-sm-8">
-				<select class="input-xlarge" style="width: 150px;" name="jiaotong0">
+				<select class="input-xlarge" style="width: 150px;" name="jiaotong0" >
 					<%
 						out.println(PageUtil.getOptions(new String[]{"小于20分钟", "大于20分钟"}, val2 ));
 					%>
@@ -362,6 +354,10 @@ String eatJson = new Gson().toJson(eat);
 				String isshow = "none";
 				
 				for(int i=0; i<3; i++){
+					String js = "";
+					if(i == 2){
+
+					}
 			%>
 			<div class="row">
 				<label  class="col-sm-4 control-label"><%=label3[i]%></label>
@@ -372,17 +368,17 @@ String eatJson = new Gson().toJson(eat);
 							f.setAccessible(true);
 							val1 = f.get( eat ).toString();
 							out.println(PageUtil.getOptions( options3[i] , val1 ));
-							if( i == 2){
-								if(val1.equals("是"))
-									isshow = "block";
-							}
+//							if( i == 2){
+//								if(val1.equals("是"))
+//									isshow = "block";
+//							}
 						%>
 					</select>
 				</div>
 			</div>
 			<% }%>
 		   
-		    <div  style="display: <%=isshow%>">
+		    <div  > <%--style="display: <%=isshow%>"--%>
 		    	<% for(int i=3; i<label3.length; i++){%>
 				<div class="row">
 					<label  class="col-sm-4 control-label"><%=label3[i]%></label>
@@ -413,8 +409,8 @@ String eatJson = new Gson().toJson(eat);
 		    	<fieldset>
 		    		<%for(int i=0; i<qs.length; i++){ %>
 		    		<div class="row">
-			        <label  class="col-sm-4 control-label"><%=qs[i] %></label>
-			        	<div class="col-sm-8">
+			        <label  class="col-sm-6 control-label"><%=qs[i] %></label>
+			        	<div class="col-sm-5">
 				        	<%--<%for(int j=0; j<qsps[i].length; j++){ 
 								%>
 					        <label class="radio-inline"> <input required type="radio" name="zhiye0<%=(i+1) %>" value="<%=qsps[i][j] %>" ><%=qsps[i][j] %></label>

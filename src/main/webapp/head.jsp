@@ -24,7 +24,12 @@
    		padding-left: 20px;
    		border-radius:4px;
    	}
-   	
+   	.printDvi{
+		width: 860px; margin-left: auto; margin-right: auto;
+		background: #f8f8ff;
+		margin-top: 10px;
+
+	}
    	.contentDiv{
    		width: 860px; margin-left: auto; margin-right: auto;
    		padding: 20px 20px 30px 20px;

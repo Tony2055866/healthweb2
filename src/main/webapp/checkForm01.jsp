@@ -30,6 +30,7 @@ for(int i=1; i<=31; i++){
    <h3 align="center">体检项目表</h3>
    
    <form class="form-horizontal" id="submitBtn" method="post" action="servlet/CheckformSubmit.jsp">
+	   <input type="hidden" name="type" value="check01">
    <div id="legend" class="">
         <legend >第一部分：体格检查
         </legend>

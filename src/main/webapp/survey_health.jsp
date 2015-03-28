@@ -207,13 +207,13 @@ health = BeanUtil.getBeanNoNullString(request, SurveyHealth.class, health);
 		        <div class="col-sm-2"><input required type="number" class="form-control "  name="firstYj" />
 		        </div>
 	        </div>
-	        
+
 	        <div class="row">
 		        <label  class="col-sm-4 control-label">如果已婚，您结婚年龄是：</label>
 		        <div class="col-sm-2"><input required type="number" class="form-control"  name="ageOfM" />
 		        </div>
 	        </div>
-	        
+
            <%
                String namesWoman[] = {"isJueJing","isHasChild","isWeiNai","hasGongJing",
                        "fuyongCiJs","hasRuXianZs", "hasRuXianAi","hasOruXianAi","howCheckRuXianAi",
@@ -232,7 +232,7 @@ health = BeanUtil.getBeanNoNullString(request, SurveyHealth.class, health);
                                 String isJueJingShow = "none";
                                 String values[] = null;
                                 try{
-                                    
+
                                     Field f = health.getClass().getDeclaredField(namesWoman[i]);
                                     f.setAccessible(true);
                                      values = f.get(health).toString().split(";");
@@ -257,7 +257,7 @@ health = BeanUtil.getBeanNoNullString(request, SurveyHealth.class, health);
                </div>
 
            <%}%>
-           
+
 	       </fieldset>
        
         <br>
