@@ -3,6 +3,7 @@ package com.util;
 import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Observable;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -47,7 +48,17 @@ public class BeanUtil {
 		}
 		return t;
 	}
-	
+
+	public static  String getField(Class c,String field,Object o){
+		try {
+			Field f = c.getDeclaredField(field);
+			f.setAccessible(true);
+			return f.get(o).toString();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "";
+	}
 	
 	public static <T> T  getBeanForRadioPage2(HttpServletRequest req, Class<T> c, T t){
 		try {

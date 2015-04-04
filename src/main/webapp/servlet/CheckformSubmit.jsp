@@ -1,10 +1,7 @@
 <%@ page import="org.slf4j.LoggerFactory" %>
 <%@ page import="org.slf4j.Logger" %>
-<%@ page import="com.dao.User" %>
 <%@ page import="com.util.BeanUtil" %>
-<%@ page import="com.dao.UserDAO" %>
-<%@ page import="com.dao.Check01" %>
-<%@ page import="com.dao.Check01DAO" %>
+<%@ page import="com.dao.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     Logger logger = LoggerFactory.getLogger("SurveySubmit.jsp");
@@ -27,18 +24,48 @@
             Check01DAO dao = new Check01DAO();
             check01.setUid(user.getId());
             dao.saveOrUpdate(check01);
-            if(submit.contains("下一页")){
-                response.sendRedirect(request.getContextPath() + "/survey_health.jsp");
+            if(submit != null && submit.contains("下一页")){
+                response.sendRedirect(request.getContextPath() + "/checkForm02.jsp");
             }else{
-                response.sendRedirect(request.getContextPath() + "/survey.jsp?result=success");
+                response.sendRedirect(request.getContextPath() + "/checkForm01.jsp?result=success");
             }
             return;
         } catch (Exception e) {
             e.printStackTrace();
-            response.sendRedirect(request.getContextPath() + "/survey.jsp?result=error");
-
+            response.sendRedirect(request.getContextPath() + "/checkForm01.jsp?result=error");
         }
-
+    }else if (type.equals("check02")){
+        try {
+            Check02 check02 = BeanUtil.getBeanNoNullStringFromRequest(request, Check02.class, null);
+            Check02DAO dao = new Check02DAO();
+            check02.setUid(user.getId());
+            dao.saveOrUpdate(check02);
+            if(submit != null && submit.contains("下一页")){
+                response.sendRedirect(request.getContextPath() + "/checkForm03.jsp");
+            }else{
+                response.sendRedirect(request.getContextPath() + "/checkForm02.jsp?result=success");
+            }
+            return;
+        } catch (Exception e) {
+            e.printStackTrace();
+            response.sendRedirect(request.getContextPath() + "/checkForm02.jsp?result=error");
+        }
+    }else if (type.equals("check03")){
+        try {
+            Check03 check03 = BeanUtil.getBeanNoNullStringFromRequest(request, Check03.class, null);
+            Check03DAO dao = new Check03DAO();
+            check03.setUid(user.getId());
+            dao.saveOrUpdate(check03);
+            if(submit != null && submit.contains("下一页")){
+                response.sendRedirect(request.getContextPath() + "/checkForm04.jsp");
+            }else{
+                response.sendRedirect(request.getContextPath() + "/checkForm03.jsp?result=success");
+            }
+            return;
+        } catch (Exception e) {
+            e.printStackTrace();
+            response.sendRedirect(request.getContextPath() + "/checkForm03.jsp?result=error");
+        }
     }
 
 %>

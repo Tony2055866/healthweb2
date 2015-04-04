@@ -29,7 +29,7 @@
       UserDAO dao = new UserDAO();
       dao.update(user);
       logger.info("save user : " + user );
-        if(submit.contains("下一页")){
+        if(submit != null && submit.contains("下一页")){
             response.sendRedirect(request.getContextPath() + "/survey_health.jsp");
         }else{
             response.sendRedirect(request.getContextPath() + "/survey.jsp?result=success");
@@ -49,7 +49,7 @@
       health.setUid(user.getId());
       dao.saveOrUpdate(health);
       logger.info("save health : " + health );
-        if(submit.contains("下一页")){
+        if(submit != null && submit.contains("下一页")){
             response.sendRedirect(request.getContextPath() + "/survey_eat.jsp");
         }else{
             response.sendRedirect(request.getContextPath() + "/survey_health.jsp?result=success");
@@ -66,7 +66,7 @@
       eat.setUid(user.getId());
       dao.saveOrUpdate(eat);
 
-        if(submit.contains("下一页")){
+        if(submit != null && submit.contains("下一页")){
             response.sendRedirect(request.getContextPath() + "/survey_check.jsp");
         }else{
             response.sendRedirect(request.getContextPath() + "/survey_eat.jsp?result=success");

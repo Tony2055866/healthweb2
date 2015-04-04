@@ -15,7 +15,7 @@ import org.slf4j.LoggerFactory;
  * methods provides additional information for how to configure it for the
  * desired type of transaction control.
  * 
- * @see dao.Check02
+ * @see com.dao.Check02
  * @author MyEclipse Persistence Tools
  */
 
@@ -93,7 +93,7 @@ public class Check02DAO extends BaseHibernateDAO {
 	public Check02 findById(Integer id) {
 		log.debug("getting Check02 instance with id: " + id);
 		try {
-			Check02 instance = (Check02) getSession().get("dao.Check02", id);
+			Check02 instance = (Check02) getSession().get("com.dao.Check02", id);
 			return instance;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);
@@ -104,7 +104,7 @@ public class Check02DAO extends BaseHibernateDAO {
 	public List findByExample(Check02 instance) {
 		log.debug("finding Check02 instance by example");
 		try {
-			List results = getSession().createCriteria("dao.Check02").add(
+			List results = getSession().createCriteria("com.dao.Check02").add(
 					Example.create(instance)).list();
 			log.debug("find by example successful, result size: "
 					+ results.size());

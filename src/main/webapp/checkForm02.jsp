@@ -1,11 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@page import="java.util.List"%>
-<%@page import="com.dao.Formdata"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="com.dao.FormdataDAO"%>
 <%@page import="com.mysql.jdbc.StringUtils"%>
-<%request.setCharacterEncoding("UTF-8") ;  %>
+<%@ page import="com.dao.*" %>
+<%@ page import="com.util.BeanUtil" %>
+<%request.setCharacterEncoding("UTF-8") ;
+	if (session.getAttribute("user") == null) {
+		response.sendRedirect("login.jsp?type=6");
+		return;
+	}
+	User user = (User) session.getAttribute("user");
+	Check02DAO check02DAO = new Check02DAO();
+	check02DAO.getSession().clear();
+	Check02 check = check02DAO.findById(user.getId());
+	check = BeanUtil.getBeanNoNullString(request, Check02.class, check);
+
+%>
+
+%>
 <jsp:include page="head.jsp">
 	<jsp:param name="title" value="体检项目-02页"></jsp:param>
 </jsp:include>
@@ -24,7 +37,9 @@ FormdataDAO dao = new FormdataDAO();
 
    <h3 align="center">体检项目表</h3>
    
-   <form class="form-horizontal" id="submitBtn" method="post">
+   <form class="form-horizontal" id="submitBtn" method="post" action="servlet/CheckformSubmit.jsp">
+	   <input type="hidden" name="type" value="check02">
+
    <div id="legend" class="">
         <legend >第二部分：实验室检查
         </legend>
@@ -58,7 +73,8 @@ FormdataDAO dao = new FormdataDAO();
 				<div class="row">
 				  <label class="col-md-5 control-label" ><%=label1 %></label>
 				  <div class="col-md-4">
-				  <input name="textinput" type="<%=form.getType()%>"  placeholder="<%=ph1%>"
+				  <input name="<%=form.getName()%>" type="<%=form.getType()%>"  placeholder="<%=ph1%>"
+						 value="<%=BeanUtil.getField(check.getClass(), form.getName(), check)%>"
 						 placeholder="" class="form-control input-md" /> 
 				 </div> <span style="height: 2em; line-height: 2em"><%=unit1%></span>
 					<!-- kg -->
@@ -69,7 +85,8 @@ FormdataDAO dao = new FormdataDAO();
 				<div class="form-group">
 				  <label class="col-md-5 control-label" ><%=label2 %></label>
 				  <div class="col-md-4">
-				  <input  name="textinput" type="<%=form2.getType()%>"  placeholder="<%=ph2%>"
+				  <input  name="<%=form2.getName()%>" type="<%=form2.getType()%>"  placeholder="<%=ph2%>"
+						  value="<%=BeanUtil.getField(check.getClass(), form2.getName(), check)%>"
 						  placeholder="" class="form-control input-md">
 				  </div> <span style="height: 2em; line-height: 2em"><%=unit2%></span>
 				</div>

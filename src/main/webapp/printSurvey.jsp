@@ -18,45 +18,47 @@
     request.setCharacterEncoding("UTF-8");
     System.out.println("check.jsp : " + session.getAttribute("user"));
     if (session.getAttribute("user") == null) {
-        response.sendRedirect("login.jsp?errortype=4");
+        response.sendRedirect("login.jsp?type=6");
         return;
     }
     User user = (User) session.getAttribute("user");
     user = BeanUtil.getBeanNoNullString(request, User.class, user);
 %>
 
-<style type="text/css">
-    .control-label1{
-        width: 120px;
-    }
-    .control-label2{
-        width: 150px;
-    }
-    .control-label3{
-        width: 200px;
-    }
-    .smallInput{
-        width: 80px;
-    }
-    .titleDiv{
-       margin-top: 5px;
-    }
 
-</style>
 <body style="background-color:#f8f8f8">
 
 <jsp:include page="tophead.jsp"></jsp:include>
 
-
 <div class="printDvi" >
+
     <label>打印预览</label>
-    <input type="button" style="margin-left: 100px" class="btn btn-success" value="确认打印">
+    <input type="button" style="margin-left: 100px" class="btn btn-success" value="确认打印" onclick="myPrint();">
 </div>
 
-<div class="contentDiv">
+<div class="contentDiv" id="print">
+    <link href="boots/css/bootstrap.min.css" rel="stylesheet">
+    <link href="boots/mycss.css" rel="stylesheet">
+    <style type="text/css">
+        .control-label1{
+            width: 120px;
+        }
+        .control-label2{
+            width: 150px;
+        }
+        .control-label3{
+            width: 200px;
+        }
+        .smallInput{
+            width: 80px;
+        }
+        .titleDiv{
+            margin-top: 5px;
+        }
 
+    </style>
 
-    <fieldset>
+   <h3>个人健康状况及生活方式问卷</h3>
         <div id="legend" class="">
             <legend>第一部分：一般信息
             </legend>
@@ -170,15 +172,12 @@
         <jsp:include page="printSurvey01.jsp"></jsp:include>
         <jsp:include page="printSurvey02.jsp"></jsp:include>
         <jsp:include page="printSurvey03.jsp"></jsp:include>
-    </fieldset>
 
 </div>
 
 <div class="printDvi" >
     <label>打印预览</label>
-    <input type="button" style="margin-left: 100px" class="btn btn-success" value="确认打印">
+    <input type="button" style="margin-left: 100px" class="btn btn-success" value="确认打印"  onclick="myPrint();">
 </div>
-
-
 </body>
 </html>

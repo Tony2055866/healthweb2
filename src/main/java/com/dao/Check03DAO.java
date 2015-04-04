@@ -183,7 +183,7 @@ public class Check03DAO extends BaseHibernateDAO {
 	public Check03 findById(Integer id) {
 		log.debug("getting Check03 instance with id: " + id);
 		try {
-			Check03 instance = (Check03) getSession().get("dao.Check03", id);
+			Check03 instance = (Check03) getSession().get("com.dao.Check03", id);
 			return instance;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);
@@ -194,7 +194,7 @@ public class Check03DAO extends BaseHibernateDAO {
 	public List findByExample(Check03 instance) {
 		log.debug("finding Check03 instance by example");
 		try {
-			List results = getSession().createCriteria("dao.Check03").add(
+			List results = getSession().createCriteria("com.dao.Check03").add(
 					Example.create(instance)).list();
 			log.debug("find by example successful, result size: "
 					+ results.size());

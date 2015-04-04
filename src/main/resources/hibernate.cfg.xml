@@ -11,7 +11,7 @@
 		<property name="hibernate.c3p0.max_size">10</property>
 		<property name="hibernate.c3p0.min_size">3</property>
 		<property name="hibernate.c3p0.timeout">120</property>
-		<property name="hibernate.c3p0.max_statements">1</property>
+		<property name="hibernate.c3p0.max_statements">100</property>
 		<property name="hibernate.c3p0.idle_test_period">120</property>
 		<property name="hibernate.c3p0.acquire_increment">1</property>
 		<property name="c3p0.testConnectionOnCheckout">true</property>
@@ -19,12 +19,12 @@
 		<property name="c3p0.maxIdleTime">250</property>
 		<property name="c3p0.idle_test_period">120</property>
 		<property name="preferredTestQuery">SELECT 1</property>
-		
+		<property name="Hibernate.temp.use_jdbc_metadata_defaults">false</property>
 		<property name="dialect">
 			org.hibernate.dialect.MySQLDialect
 		</property>
 		<property name="connection.url">
-			jdbc:mysql://www.acmerblog.com:3306/health?characterEncoding=utf-8
+			jdbc:mysql://115.47.15.58:3306/health?characterEncoding=utf-8
 		</property>
 		<property name="connection.username">root</property>
 		<property name="connection.password">qwer1234</property>

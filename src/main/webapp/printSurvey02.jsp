@@ -31,7 +31,6 @@
   SurveyEat eat = eatDao.findById(user.getId());
   eat = BeanUtil.getBeanNoNullString(request, SurveyEat.class, eat);
 %>
-<fieldset>
   <div class="titleDiv">一般情况下，您平均每周有几天吃下列食物?</div>
   <table width="98%">
   <%for(int i=0; i<10; i+=2){%>
@@ -104,10 +103,8 @@
     <label class="radio-inline"> <input <%out.println(eat.getEatt().equals("很咸") ? "checked":"");%> type="radio" name="eatt"  value="很咸">很咸</label>
   </div>
 
-</fieldset>
 
   <div class="titleDiv">吸烟情况</div>
-  <fieldset>
     <label  class="col-sm-4 control-label">您是否吸烟？</label>
     <div class="col-sm-6">
       <label class="radio-inline"> <input required type="radio" name="isXiyan" <%out.println(eat.getIsXiyan().equals("是") ? "checked":"");%> value="是" >是</label>
@@ -115,8 +112,6 @@
       <label class="radio-inline"> <input required type="radio" name="isXiyan"  <%out.println(eat.getIsXiyan().equals("已戒") ? "checked":"");%> value="已戒" >已戒</label>
     </div>
 
-
-</fieldset>
 
 <%
   String div1 = "none",div2="none",div3="none";
@@ -190,7 +185,6 @@
 </div>
 
 <div class="titleDiv">饮酒情况</div>
-<fieldset>
   <div>
     <label   style="width: 300px;">您饮酒吗?</label>
       <select class="input-xlarge" style="width: 200px" name="isdrink" onchange="selectChange(this,'isdrink',0)">
@@ -233,7 +227,6 @@
         </select>
     </div>
   </div>
-</fieldset>
 
 
 <% String label3[] = {"干家务活", "体育锻炼", "近年来，您参加每次持续20分钟以上的体育锻炼吗?","您平均每周锻炼多少次?",
@@ -245,7 +238,6 @@
   String isshow = "none"; %>
 
 <div class="titleDiv">体力活动及体育锻炼</div>
-<fieldset>
   <table width="100%">
     <tr>
       <td>
@@ -331,7 +323,6 @@
 
 		    	%>
   <div class="titleDiv">职业、精神及社会因素</div>
-  <fieldset>
     <%for(int i=0; i<qs.length; i++){ %>
     <div>
       <label  style="width:400px;"><%=qs[i] %></label>
@@ -346,8 +337,3 @@
         </select>
     </div>
     <%} %>
-  </fieldset>
-
-
-
-</fieldset>

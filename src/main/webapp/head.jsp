@@ -7,66 +7,14 @@
 <%String title = request.getParameter("title"); %>
 <title><%=title %></title>
 <link href="boots/css/bootstrap.min.css" rel="stylesheet">
+	<link href="boots/mycss.css" rel="stylesheet">
 	<script src="boots/html5shiv.js"></script>
 	<script src="boots/respond.min.js"></script>
 	<link href="topmenu.css" rel="stylesheet">
 
 	<script src="boots/js/jquery.min.js"></script>
    <script src="boots/js/bootstrap.min.js"></script>
-	<style type="text/css">
-   	.titleDiv{
-   		background: #eff1f3;
-   		font-size: 17px;
-   		font-weight: bold;
-   		line-height: 36px;
-   		border-color:#EEEEEE;
-   		margin: 30px 0px 10px 0px;
-   		padding-left: 20px;
-   		border-radius:4px;
-   	}
-   	.printDvi{
-		width: 860px; margin-left: auto; margin-right: auto;
-		background: #f8f8ff;
-		margin-top: 10px;
 
-	}
-   	.contentDiv{
-   		width: 860px; margin-left: auto; margin-right: auto;
-   		padding: 20px 20px 30px 20px;
-   		background: #ffffff;
-   		border: 1px solid #ddd;
-   		margin-top: 20px;
-   		margin-bottom: 20px;
-   	}
-   	.bodyStyle{
-   		background-color:#f8f8f8;
-   	}
-   	.input-group-addon{
-   		width:250px;
-   	}
-
-    .number{
-        width: 50px;
-    }
-   	
-   	
-
-	.form-horizontal .control-label{
-		padding-top:0px;
-	}
-
-	.row{
-		padding-top:6px;
-	}
-	.radio-inline{
-		margin-right: 20px;
-	}
-	input:focus, input:hover, textarea:focus, textarea:hover {
-		 
-	}
-	   
-   </style>
-   
   <script type="text/javascript">
  function checkYes(ele){
 	 var time = 500;
@@ -151,6 +99,17 @@
 			   $(this).attr("value",obj[pname]);
 		  });
 	 }
+ }
+
+
+ function myPrint(){
+	 var obj = document.getElementById('print');
+	 var newWindow=window.open("打印窗口","_blank");//打印窗口要换成页面的url
+	 var docStr = obj.innerHTML;
+	 newWindow.document.write(docStr);
+	 newWindow.document.close();
+	 newWindow.print();
+	 newWindow.close();
  }
 
 	<% if("success".equals( request.getParameter("result")) ){   %>
