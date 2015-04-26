@@ -3,6 +3,8 @@
 <%@page import="com.dao.User"%>
 <%@page import="com.util.PageUtil"%>
 <%@ page import="com.util.BeanUtil" %>
+<%@ page import="com.dao.CureDAO" %>
+<%@ page import="com.dao.Cure" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
@@ -68,22 +70,26 @@
 	}
 	User user = (User)session.getAttribute("user") ;
 	user = BeanUtil.getBeanNoNullString(request, User.class, user);
+	CureDAO cureDAO = new CureDAO();
+	Cure cure = cureDAO.findById(user.getId());
+	cure = BeanUtil.getBeanNoNullString(request, Cure.class, cure);
+
 %>
 
 <jsp:include page="tophead.jsp"></jsp:include>
 <div class="contentDiv">
 
-	<form class="form-horizontal" id="myform" method="POST" action="servlet/SurveyCure.jsp">
+	<form class="form-horizontal" id="myform" method="POST" action="servlet/CureSubmit.jsp">
 		<fieldset>
-			<h4 style="margin-left: 200px">治疗情况</h4><hr>
+			<h4 style="margin-left: 200px">治疗情况: &nbsp;<%=user.getNameZh()%></h4><hr>
 			<div class="control-group">
 				<label class="control-label">治疗时间</label>
 				<div class="controls input-append date form_date" style="margin-left:20px; "
 					 data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
-					<input name="birth"  type="text" value="<%=user.getBirth() %>" readonly >
+					<input name="time"  type="text" value="<%=cure.getTime() %>" readonly >
 					<span class="add-on"><i class="icon-th"></i></span>
 				</div>
-				<input type="hidden" name="birth" id="dtp_input2" value="<%=user.getBirth() %>" required/><br/>
+				<input type="hidden" name="birth" id="dtp_input2" value="<%=cure.getTime() %>" required/><br/>
 			</div>
 			<script type="text/javascript">
 				$('.form_date').datetimepicker({
@@ -103,7 +109,7 @@
 			<div class="control-group">
 				<label class="control-label" >治疗医院：</label>
 				<div class="controls">
-					<input type="text"   value="<%=user.getAddress() %>" name="address" required class="input-xlarge">
+					<input type="text"   value="<%=cure.getAddress() %>" name="address" required class="input-xlarge">
 				</div>
 			</div>
 
@@ -112,7 +118,7 @@
 				<!-- Text input-->
 				<label class="control-label" >治疗科室：</label>
 				<div class="controls">
-					<input type="text" name="phone" placeholder="手机号" value="<%=user.getPhone() %>" class="input-xlarge" required>
+					<input type="text" name="cate" value="<%=cure.getCate() %>" class="input-xlarge" required>
 					<p class="help-block"></p>
 				</div>
 			</div>
@@ -120,7 +126,7 @@
 			<div class="control-group">
 				<label class="control-label">主治医师：</label>
 				<div class="controls">
-					<input type="text" value="<%=user.getEmail() %>" name="email" placeholder="" class="input-xlarge" required>
+					<input type="text" value="<%=cure.getDoc() %>" name="doc" placeholder="" class="input-xlarge" required>
 					<p class="help-block"></p>
 				</div>
 			</div>
@@ -128,7 +134,7 @@
 			<div class="control-group">
 				<label class="control-label">治疗情况：</label>
 				<div class="controls">
-					<input type="text" value="<%=user.getEmail() %>" name="email" placeholder="" class="input-xlarge" required>
+					<input type="text" value="<%=cure.getRes() %>" name="res" placeholder="" class="input-xlarge" required>
 					<p class="help-block"></p>
 				</div>
 			</div>
@@ -136,7 +142,7 @@
 			<div class="control-group">
 				<label class="control-label">备注：</label>
 				<div class="controls">
-					<input type="text" value="<%=user.getEmail() %>" name="email" placeholder="" class="input-xlarge" required>
+					<input type="text" value="<%=cure.getOther() %>" name="other" placeholder="" class="input-xlarge" required>
 					<p class="help-block"></p>
 				</div>
 			</div>
