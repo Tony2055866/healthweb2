@@ -1,0 +1,50 @@
+.titleDiv{
+    background: #eff1f3;
+    font-size: 17px;
+    font-weight: bold;
+    line-height: 36px;
+    border-color:#EEEEEE;
+    margin: 30px 0px 10px 0px;
+    padding-left: 20px;
+    border-radius:4px;
+}
+.printDvi{
+    width: 860px; margin-left: auto; margin-right: auto;
+    background: #f8f8ff;
+    margin-top: 10px;
+
+}
+.contentDiv{
+    width: 860px; margin-left: auto; margin-right: auto;
+    padding: 20px 20px 30px 20px;
+    background: #ffffff;
+    border: 1px solid #ddd;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.bodyStyle{
+    background-color:#f8f8f8;
+}
+.input-group-addon{
+    width:250px;
+}
+
+.number{
+    width: 50px;
+}
+
+
+
+.form-horizontal .control-label{
+    padding-top:0px;
+}
+
+.row{
+    padding-top:6px;
+}
+.radio-inline{
+    margin-right: 20px;
+}
+input:focus, input:hover, textarea:focus, textarea:hover {
+
+}
