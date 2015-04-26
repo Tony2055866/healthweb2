@@ -41,6 +41,7 @@
         <mapping resource="com/dao/Check01.hbm.xml" />
         <mapping resource="com/dao/Check03.hbm.xml" />
         <mapping resource="com/dao/Check02.hbm.xml" />
+		<mapping resource="com/dao/Cure.hbm.xml" />
         
 	</session-factory>
 
