@@ -26,13 +26,7 @@
 <body style="background-color:#f8f8f8">
 
 <%
-List<Formdata> forms = new ArrayList<Formdata>();
 FormdataDAO dao = new FormdataDAO();
-for(int i=1; i<=31; i++){
-	//Formdata form = dao.findById(i);
-	//System.out.println(form);
-	//forms.add( form );
-}
 
 %>
 <jsp:include page="tophead.jsp"></jsp:include>

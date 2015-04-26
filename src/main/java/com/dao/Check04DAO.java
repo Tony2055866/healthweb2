@@ -74,7 +74,7 @@ public class Check04DAO extends BaseHibernateDAO {
 	public Check04 findById(Integer id) {
 		log.debug("getting Check04 instance with id: " + id);
 		try {
-			Check04 instance = (Check04) getSession().get("com.dao.Check03", id);
+			Check04 instance = (Check04) getSession().get("com.dao.Check04", id);
 			return instance;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);

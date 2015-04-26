@@ -1,15 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@page import="java.util.List"%>
-<%@page import="com.dao.Formdata"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="com.dao.FormdataDAO"%>
 <%@page import="com.mysql.jdbc.StringUtils"%>
-<%@ page import="com.dao.HibernateSessionFactory" %>
 <%@ page import="org.hibernate.Query" %>
-<%@ page import="com.dao.MyDiv" %>
 <%@ page import="com.util.PageUtil" %>
-<%request.setCharacterEncoding("UTF-8") ;  %>
+<%@ page import="com.dao.*" %>
+<%@ page import="com.util.BeanUtil" %>
+<%request.setCharacterEncoding("UTF-8") ;
+	if (session.getAttribute("user") == null) {
+		response.sendRedirect("login.jsp?type=6");
+		return;
+	}
+	User user = (User) session.getAttribute("user");
+	Check03DAO check03DAO = new Check03DAO();
+	check03DAO.getSession().clear();
+	Check03 check = check03DAO.findById(user.getId());
+	check = BeanUtil.getBeanNoNullString(request, Check03.class, check);
+%>
 <jsp:include page="head.jsp">
 	<jsp:param name="title" value="体检项目-03页"></jsp:param>
 </jsp:include>
@@ -50,7 +58,8 @@ Query query = HibernateSessionFactory.getSession().createQuery("from Formdata f 
 
    <h3 align="center">体检项目表</h3>
    
-   <form class="form-horizontal" id="submitBtn" method="post">
+   <form class="form-horizontal" id="submitBtn" method="post" action="servlet/CheckformSubmit.jsp">
+	   <input type="hidden" name="type" value="check03">
    <div id="legend" class="">
         <legend >第三部分：实验室血液检验
 		</legend>
@@ -63,7 +72,7 @@ Query query = HibernateSessionFactory.getSession().createQuery("from Formdata f 
 			   <select class="input required-xlarge" style="width: 160px; height:2em;" name="labxone0" >
 				   <%
 					   out.println(PageUtil.getOptions(new String[]{"O型", "A型", "B型", "AB型"},
-							   "")); %>
+							   check.getLabxone0())); %>
 			   </select>
 		   </div>
 	   </div>
@@ -82,16 +91,15 @@ Query query = HibernateSessionFactory.getSession().createQuery("from Formdata f 
 		   <% for(int j=0; j<div.forms.size(); j+=2){ 
 		   		Formdata form1 = div.forms.get(j);
 			  	String ph1 = form1.getType().equals("text") ? "文本":"数值";
+			   String val1 = BeanUtil.getField(check.getClass(),form1.getName(),check);
 		   %>
 		   <tr>
-			   
 			   <td>
 				   <div class=" row">
 					   <label class="col-md-5 control-label" style="width: 200px"><%=form1.getLabel() %></label>
 					   <div class=" col-md-<%=md2%>">
-						   <input name="textinput" style="width: <%=width%>px" placeholder="<%=ph1%>"
+						   <input name="<%=form1.getName()%>" style="width: <%=width%>px" placeholder="<%=ph1%>" value="<%=val1%>"
 								  type="<%=form1.getType()%>" placeholder="" class="form-control input-md">
-						   
 					   </div>
 					   <% if( !form1.getUnit().equals("") ){ %>
 					   <div class=" col-md-1" style="width: 80px;padding: 3px 4px 3px 10px;"><%=form1.getUnit()%></div>
@@ -103,15 +111,15 @@ Query query = HibernateSessionFactory.getSession().createQuery("from Formdata f 
 			   <%if(j+1 < div.forms.size()){
 				   Formdata form2 = div.forms.get(j+1);
 				   String ph2 = form2.getType().equals("text") ? "文本":"数值";
+				   String val2 =  BeanUtil.getField(check.getClass(),form2.getName(),check);
 			   %>
 				   <td>
 					   <div class="form-group">
 						   <label class="col-md-5 control-label" style="width: 200px"><%=form2.getLabel() %></label>
 						   <div class=" col-md-3">
-							   <input  name="textinput" style="width: 100px" placeholder="<%=ph2%>"
+							   <input  name="<%=form2.getName()%>" style="width: 100px" placeholder="<%=ph2%>" value="<%=val2%>"
 									   type="<%=form2.getType()%>" placeholder="" class="form-control input-md">
-							  
-						   </div> 
+						   </div>
 						   <% if( !form2.getUnit().equals("") ){ %>
 						  	 <span class=" col-md-1" style="width: 80px;padding: 3px 4px 3px 10px;"><%=form2.getUnit()%></span>
 						   <%}%>

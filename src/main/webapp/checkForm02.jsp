@@ -13,8 +13,8 @@
 	User user = (User) session.getAttribute("user");
 	Check02DAO check02DAO = new Check02DAO();
 	check02DAO.getSession().clear();
-	Check02 check = check02DAO.findById(user.getId());
-	check = BeanUtil.getBeanNoNullString(request, Check02.class, check);
+	Check02 check02 = check02DAO.findById(user.getId());
+	check02 = BeanUtil.getBeanNoNullString(request, Check02.class, check02);
 
 %>
 
@@ -74,7 +74,7 @@ FormdataDAO dao = new FormdataDAO();
 				  <label class="col-md-5 control-label" ><%=label1 %></label>
 				  <div class="col-md-4">
 				  <input name="<%=form.getName()%>" type="<%=form.getType()%>"  placeholder="<%=ph1%>"
-						 value="<%=BeanUtil.getField(check.getClass(), form.getName(), check)%>"
+						 value="<%=BeanUtil.getField(check02.getClass(), form.getName(), check02)%>"
 						 placeholder="" class="form-control input-md" /> 
 				 </div> <span style="height: 2em; line-height: 2em"><%=unit1%></span>
 					<!-- kg -->
@@ -86,7 +86,7 @@ FormdataDAO dao = new FormdataDAO();
 				  <label class="col-md-5 control-label" ><%=label2 %></label>
 				  <div class="col-md-4">
 				  <input  name="<%=form2.getName()%>" type="<%=form2.getType()%>"  placeholder="<%=ph2%>"
-						  value="<%=BeanUtil.getField(check.getClass(), form2.getName(), check)%>"
+						  value="<%=BeanUtil.getField(check02.getClass(), form2.getName(), check02)%>"
 						  placeholder="" class="form-control input-md">
 				  </div> <span style="height: 2em; line-height: 2em"><%=unit2%></span>
 				</div>

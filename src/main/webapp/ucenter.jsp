@@ -56,6 +56,7 @@ if(user == null){
 				
 				<div class="col-md-8" style="margin-top: 10px;">
 					<a	class="btn btn-link" href="checkForm01.jsp" role="button">填写体检项目表</a>
+					<a class="btn btn-success" href="printForm.jsp" role="button">打印</a>
 				</div>
 
 			<div class="col-md-8" style="margin-top: 10px;">

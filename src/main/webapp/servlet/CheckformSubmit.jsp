@@ -66,6 +66,22 @@
             e.printStackTrace();
             response.sendRedirect(request.getContextPath() + "/checkForm03.jsp?result=error");
         }
+    }else if(type.equals("check04")){
+        try {
+            Check04 check04 = BeanUtil.getBeanNoNullStringFromRequest(request, Check04.class, null);
+            Check04DAO dao = new Check04DAO();
+            check04.setUid(user.getId());
+            dao.saveOrUpdate(check04);
+            if(submit != null && submit.contains("下一页")){
+                response.sendRedirect(request.getContextPath() + "/checkForm04.jsp");
+            }else{
+                response.sendRedirect(request.getContextPath() + "/checkForm04.jsp?result=success");
+            }
+            return;
+        } catch (Exception e) {
+            e.printStackTrace();
+            response.sendRedirect(request.getContextPath() + "/checkForm04.jsp?result=error");
+        }
     }
 
 %>
