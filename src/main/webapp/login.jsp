@@ -82,7 +82,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <div class="col-md-8">
     <button id="button1id" type="submit" name="button1id" class="btn btn-success">&nbsp;&nbsp;&nbsp;   登    &nbsp;&nbsp; 录  &nbsp;&nbsp;&nbsp; </button>
     <a class="btn btn-info" href="index.jsp" role="button">注册新用户</a>
-    <a class="btn btn-default" href="login.jsp" role="button">找回密码</a>
+    <a class="btn btn-default" href="findpwd.jsp" role="button">找回密码</a>
   </div>
 </div>
 </form>
