@@ -71,6 +71,7 @@
 	User user = (User)session.getAttribute("user") ;
 	user = BeanUtil.getBeanNoNullString(request, User.class, user);
 	CureDAO cureDAO = new CureDAO();
+	cureDAO.getSession().clear();
 	Cure cure = cureDAO.findById(user.getId());
 	cure = BeanUtil.getBeanNoNullString(request, Cure.class, cure);
 

@@ -22,6 +22,10 @@
       <li>
         <a href="checkForm01.jsp">体检项目表</a>
       </li>
+
+      <li>
+        <a href="cure.jsp">治疗情况</a>
+      </li>
     </ul>
 
 

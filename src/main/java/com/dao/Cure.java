@@ -14,6 +14,7 @@ public class Cure implements java.io.Serializable {
 	private String cate;
 	private String res;
 	private String other;
+	private String doc;
 
 	// Constructors
 
@@ -28,13 +29,14 @@ public class Cure implements java.io.Serializable {
 
 	/** full constructor */
 	public Cure(Integer uid, String time, String address, String cate,
-			String res, String other) {
+			String res, String other, String doc) {
 		this.uid = uid;
 		this.time = time;
 		this.address = address;
 		this.cate = cate;
 		this.res = res;
 		this.other = other;
+		this.doc = doc;
 	}
 
 	// Property accessors
@@ -85,6 +87,14 @@ public class Cure implements java.io.Serializable {
 
 	public void setOther(String other) {
 		this.other = other;
+	}
+
+	public String getDoc() {
+		return this.doc;
+	}
+
+	public void setDoc(String doc) {
+		this.doc = doc;
 	}
 
 }

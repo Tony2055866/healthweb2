@@ -42,22 +42,46 @@ if(user == null){
 
 <jsp:include page="tophead.jsp"></jsp:include>
 
-	<div class="contentDiv">
+<style type="text/css">
+	 td {padding-top: 10px; }
+</style>
+	<div class="contentDiv" style="text-align: center">
 		<fieldset>
 				<!-- Form Name -->
 				<legend style="padding: 10px; ">个人中心:  <%=user.getEmail()%>  </legend>
-		
-				<div class="col-md-8">
-					<a class="btn btn-link" href="survey.jsp" role="button"><%=f%></a>
-					<% if(user.getFinish().equals("true")){ %>
-					<a class="btn btn-success" href="printSurvey.jsp" role="button">打印</a>
-					<%}%>
-				</div>
-				
-				<div class="col-md-8" style="margin-top: 10px;">
-					<a	class="btn btn-link" href="checkForm01.jsp" role="button">填写体检项目表</a>
-					<a class="btn btn-success" href="printForm.jsp" role="button">打印</a>
-				</div>
+
+			<table width="60%" style="margin-left: 100px;">
+				<tr >
+					<td>
+						<a class="btn btn-link" href="survey.jsp" role="button"><%=f%></a>
+					</td>
+					<td>
+						<% if(user.getFinish().equals("true")){ %>
+						<a class="btn btn-success" href="printSurvey.jsp" role="button">打印</a>
+						<%}%>
+					</td>
+				</tr>
+
+				<tr >
+					<td>
+						<a	class="btn btn-link" href="checkForm01.jsp" role="button">体检项目表</a>
+					</td>
+					<td>
+						<a class="btn btn-success" href="printForm.jsp" role="button">打印</a>
+					</td>
+				</tr>
+
+				<tr >
+					<td>
+						<a	class="btn btn-link" href="cure.jsp" role="button">治疗情况表</a>
+					</td>
+					<td>
+						<a class="btn btn-success" href="printCure.jsp" role="button">打印</a>
+					</td>
+				</tr>
+
+			</table>
+
 
 			<div class="col-md-8" style="margin-top: 10px;">
 				<a	class="btn btn-link" href="logout.jsp" role="button">退出登录</a>

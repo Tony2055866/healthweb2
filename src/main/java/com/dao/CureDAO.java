@@ -15,7 +15,7 @@ import org.slf4j.LoggerFactory;
  * provides additional information for how to configure it for the desired type
  * of transaction control.
  * 
- * @see com.dao.Cure
+ * @see Cure
  * @author MyEclipse Persistence Tools
  */
 
@@ -27,6 +27,7 @@ public class CureDAO extends BaseHibernateDAO {
 	public static final String CATE = "cate";
 	public static final String RES = "res";
 	public static final String OTHER = "other";
+	public static final String DOC = "doc";
 
 	public void save(Cure transientInstance) {
 		log.debug("saving Cure instance");
@@ -108,6 +109,10 @@ public class CureDAO extends BaseHibernateDAO {
 
 	public List findByOther(Object other) {
 		return findByProperty(OTHER, other);
+	}
+
+	public List findByDoc(Object doc) {
+		return findByProperty(DOC, doc);
 	}
 
 	public List findAll() {

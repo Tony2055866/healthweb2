@@ -25,5 +25,8 @@
         <property name="other" type="java.lang.String">
             <column name="other" />
         </property>
+        <property name="doc" type="java.lang.String">
+            <column name="doc" />
+        </property>
     </class>
 </hibernate-mapping>
